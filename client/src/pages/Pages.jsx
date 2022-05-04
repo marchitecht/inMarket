@@ -4,7 +4,6 @@ import Category from '../components/Category';
 
 function Pages() {
   const location = useLocation()
-  console.log(location);
   return (
     <Routes location={location} key={location.pathname}>
       <Route path='/category' element={<Category/>}/>
