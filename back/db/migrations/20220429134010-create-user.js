@@ -31,12 +31,18 @@ module.exports = {
       isOnline: {
         type: Sequelize.BOOLEAN,
       },
+      isActivated: {
+        type: Sequelize.BOOLEAN,
+      },
       roleId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Roles',
           key: 'id',
         },
+      },
+      activationLink: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
