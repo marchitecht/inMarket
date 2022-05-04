@@ -7,6 +7,7 @@ import Vegetables from "./components/Vegetables";
 import Fruits from "./components/Fruits";
 import Bread from "./components/Bread";
 import Berries from "./components/Berries";
+import {MdPriceChange} from 'react-icons/md'
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
 }
 const Logo = styled(Link)`
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
 `;
