@@ -3,15 +3,24 @@ const { Role } = require('./db/models');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const upload = require('./middlewares/upload.middleware');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const upload = require('./middlewares/upload.middleware');
+require('./auth/passport');
+require('./auth/passportGoogleSSO');
+
+require('./db/models/user');
+
+const api = require('./api');
+
 const errorMiddleware = require('./middlewares/error.middleware');
 const indexRouter = require('./routes');
 const authRouter = require('./routes/auth.router');
-
 
 const PORT = process.env.PORT ?? 3001;
 
@@ -21,6 +30,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -34,7 +44,6 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use(errorMiddleware);
 
 async function roleCreate() {
   await Role.create({ type: 'Покупатель' });
@@ -45,6 +54,10 @@ async function roleCreate() {
 
 // roleCreate();
 
-app.listen(PORT, () => {
-  console.log('server started on', PORT);
-});
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/api/v1', api);
+app.use(errorMiddleware);
+
+module.exports = app;

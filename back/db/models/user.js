@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     isActivated: DataTypes.BOOLEAN,
     roleId: DataTypes.INTEGER,
     activationLink: DataTypes.STRING,
+    googleId: DataTypes.STRING,
+    vkId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'User',
