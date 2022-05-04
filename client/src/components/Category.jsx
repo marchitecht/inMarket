@@ -1,64 +1,59 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import Search from '../components/Search';
+
 
 function Category() {
+  const navigate = useNavigate()
   return (
-    <List>
-      <Slink to={'/'}>
-       
-        <h4>Овощи</h4>
-      </Slink >
-      <Slink to={'/'}>
-       
-        <h4>Фрукты</h4>
-      </Slink>
-      <Slink to={'/'}>
-        
-        <h4>Ягоды</h4>
-      </Slink>
-      <Slink to={'/'}>
-       
-        <h4>Хлеб</h4>
-      </Slink>
-    </List>
+<>
+
+<Search /> 
+<Container>
+<Card1 onClick={()=> navigate('/vegetables')}> 
+<Content> 
+<h2>Овощи</h2>
+</Content>
+</Card1>
+
+</Container>
+</>
   )
 }
 
-const List = styled.div`
+
+
+ const Container = styled.div`
+  position:relative;
   display: flex;
-  justify-content: center;
-  margin: 2rem 0rem;
-`;
-const Slink = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  margin-right: 2rem;
-  text-decoration: none;
-  backgound: linear-gradient(35deg, #494949, #313131);
-  width: 6rem;
-  height: 6rem;
-  cursor: pointer;
-  transform: scale(0.8);
-  h4{
-    color: white;
-    font-size: 1rem;
-  }
-  svg {
-    color: black;
-    font-size: 1.5rem;
-  }
+  max-width: 100%;
+  flex-wrap: wrap;
+  z-index:1;
+`;
+const Card1 = styled.div`
+  position:relative;
+  width:300px;
+  height:300px;
+  margin:30px;
+  border-radius:150px;
+  background: #f0d692;
+  opacity: 0.9;
+  outline: 6px solid #a1a086;
 
-  &.active{
-    background: linear-gradient(to right, #f27121, #e94057);
 
-    svg{
-      color: black;
-    }
-  }
+
+`;
+
+
+
+const Content = styled.div`
+padding: 20px;
+text-align: center;
+transition: 0.5s;
+
 `;
 
 export default Category
