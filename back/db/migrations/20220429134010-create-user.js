@@ -43,6 +43,13 @@ module.exports = {
       },
       activationLink: {
         type: Sequelize.STRING,
+      googleId: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      vkId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,
