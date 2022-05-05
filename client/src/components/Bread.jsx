@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {bread} from '../data';
+
 
 function Bread() {
 
@@ -8,31 +8,31 @@ function Bread() {
     <Container>
 <Card1> 
 <Content> 
-<h2>{bread[0].title}</h2>
+<h2></h2>
 </Content>
 </Card1>
 
 <Card2> 
 <Content> 
-<h2>{bread[1].title}</h2>
+<h2></h2>
 </Content>
 </Card2>
 
 <Card3> 
 <Content> 
-<h2>{bread[2].title}</h2>
+<h2></h2>
 </Content>
 </Card3>
 
 <Card4> 
 <Content> 
-<h2>{bread[3].title}</h2>
+<h2></h2>
 </Content>
 </Card4>
 
 <Card5> 
 <Content> 
-<h2>{bread[4].title}</h2>
+<h2></h2>
 </Content>
 </Card5>
 
@@ -60,7 +60,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://images.pexels.com/photos/209206/pexels-photo-209206.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+background-image: url();
 color: white;
 overflow: hidden;
 display: flex;
@@ -82,7 +82,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://i.pinimg.com/736x/12/aa/0b/12aa0bf8d40e357b77425cec77427946--stale-bread-food-magazines.jpg');
+background-image: url();
 color: white;
 overflow: hidden;
 display: flex;
@@ -104,7 +104,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://images.pexels.com/photos/7635062/pexels-photo-7635062.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+background-image: url();
 color: white;
 overflow: hidden;
 display: flex;
@@ -126,7 +126,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://maxvps.ru/wp-content/uploads/a/0/1/a0160c5eff27049f23c45bf868eed8a3.jpeg');
+background-image: url();
 color: white;
 overflow: hidden;
 display: flex;
@@ -148,7 +148,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://images.pexels.com/photos/7568493/pexels-photo-7568493.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+background-image: url();
 color: white;
 overflow: hidden;
 display: flex;

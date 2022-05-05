@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { berries } from "../data";
+
 
 function Berries() {
   return (
@@ -7,31 +7,31 @@ function Berries() {
       <Container>
         <Card1>
           <Content>
-            <h2>{berries[0].title}</h2>
+            <h2></h2>
           </Content>
         </Card1>
 
         <Card2>
           <Content>
-            <h2>{berries[1].title}</h2>
+            <h2></h2>
           </Content>
         </Card2>
 
         <Card3>
           <Content>
-            <h2>{berries[2].title}</h2>
+            <h2></h2>
           </Content>
         </Card3>
 
         <Card4>
           <Content>
-            <h2>{berries[3].title}</h2>
+            <h2></h2>
           </Content>
         </Card4>
 
         <Card5>
           <Content>
-            <h2>{berries[4].title}</h2>
+            <h2></h2>
           </Content>
         </Card5>
       </Container>
@@ -57,7 +57,7 @@ margin:30px;
 box-shadow: 20px 20px 50px #585858;
 border-radius:15px;
 background: #e9a888d2;
-background-image: url('https://o-tendencii.com/uploads/posts/2022-03/1646100431_58-o-tendencii-com-p-klubnika-marmelada-foto-71.jpg');
+background-image: url('https://dietology.pro/upload/iblock/b63/b6343289c7b975cf24b4a09c97982409.jpg');
 color: white;
 overflow: hidden;
 display: flex;
