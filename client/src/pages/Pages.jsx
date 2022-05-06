@@ -8,7 +8,6 @@ import Vegetables from '../components/Vegetables';
 
 function Pages() {
   const location = useLocation()
-  console.log(location);
   return (
     <Routes location={location} key={location.pathname}>
       <Route path='/' element={<Category/>}/>

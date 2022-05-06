@@ -48,7 +48,7 @@ class UserController {
       const token = await userService.logout(refreshToken);
       res.clearCookie('refreshToken');
       if (token) {
-        return res.sendStatus(200);
+        return res.json(token);
       }
     } catch (error) {
       next(error);

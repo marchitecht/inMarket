@@ -1,9 +1,10 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 const { User } = require('../db/models');
+const UserDto = require('../dtos/user-dto');
+const tokenService = require('../services/token-service');
 
-const GOOGLE_CALLBACK_URL = 'http://localhost:5000/api/v1/auth/google/callback';
+const GOOGLE_CALLBACK_URL = `${process.env.BACK_URL}/api/v1/auth/google/callback`;
 
 passport.use(
   new GoogleStrategy(
@@ -20,6 +21,7 @@ passport.use(
         email: profile.emails[0].value,
         avatar: profile.photos[0].value,
         googleId: profile.id,
+        isActivated: true,
       };
       console.log(defaultUser);
       const user = await User.findOrCreate({
@@ -30,22 +32,30 @@ passport.use(
           console.log('Problem signing in', err);
           cb(err, null);
         });
-      console.log('====user',user);
-      if (user && user[0]) return cb(null, user && user[0]);
+      if (user[0]) return cb(null, user[0]);
     },
   ),
 );
 
-passport.serializeUser((user, cb) => {
+passport.serializeUser(async (user, cb) => {
+  console.log('user-->', user.dataValues);
+  const userDto = await new UserDto({ ...user.dataValues });
+  console.log(userDto.id);
+  const tokens = await tokenService.generateTokens({ ...userDto });
+  await tokenService.saveToken(userDto.id, tokens.refreshToken);
+  const userData = {
+    ...tokens,
+    ...userDto,
+  };
   console.log('serializing user', user);
-  cb(null, user.id);
+  cb(null, userData);
 });
-passport.deserializeUser(async (id, cb) => {
-  const user = await User.findOne({ where: { id } })
+passport.deserializeUser(async ({ id }, cb) => {
+  const userInDb = await User.findOne({ where: { id } })
     .catch((err) => {
       console.log('Error deserializing', err);
       cb(err, null);
     });
-  console.log('Deserialized user', user);
-  if (user)cb(null, user);
+  if (userInDb)cb(null, userInDb);
+  console.log('Deserialized user', userInDb);
 });
