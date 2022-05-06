@@ -1,64 +1,134 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import tomato1 from '../img/tomato.png';
+import berries from '../img/berries.png';
+import bread from '../img/bread.png';
+import pear from '../img/pear.png';
+import Background from './Background';
+
+
+const categories = [{
+  img: tomato1,
+  color1: '#f0a792',
+  color2: '#bc6b53',
+  color3: '#e96841',
+  color4: '#5e2020',
+  link: '/vegetables',
+  name: 'Овощи',
+},{
+  img: berries,
+  color1: '#9392f0',
+  color2: '#5355bc',
+  color3: '#5241e9',
+  color4: '#21205e',
+  link: '/berries',
+  name: 'Ягоды',
+},{
+  img: bread,
+  color1: '#f0da92',
+  color2: '#bca953',
+  color3: '#e9bc41',
+  color4: '#5e5320',
+  link: '/bread',
+  name: 'Хлеб',
+},{
+  img: pear,
+  color1: '#dff092',
+  color2: '#a0bc53',
+  color3: '#b7e941',
+  color4: '#465e20',
+  link: '/fruits',
+  name: 'Фрукты',
+},]
 
 function Category() {
+  const navigate = useNavigate()
   return (
-    <List>
-      <Slink to={'/'}>
-       
-        <h4>Овощи</h4>
-      </Slink >
-      <Slink to={'/'}>
-       
-        <h4>Фрукты</h4>
-      </Slink>
-      <Slink to={'/'}>
-        
-        <h4>Ягоды</h4>
-      </Slink>
-      <Slink to={'/'}>
-       
-        <h4>Хлеб</h4>
-      </Slink>
-    </List>
+<>
+<Background/>
+<Container>
+{categories.map((el) => {
+  return (
+  <>
+  <Vegetables onClick={()=> navigate(el.link)} colors={[el.color1, el.color2, el.color3]}> 
+<Content colorText={el.color4}> 
+  {el.name}
+</Content>
+<VegetablesDiv img={el.img}>
+</VegetablesDiv>
+</Vegetables>
+  </>
+  )
+})}
+</Container>
+</>
   )
 }
 
-const List = styled.div`
+ const Container = styled.div`
+ height: 95vh;
+ margin-top: -7rem;
+  position:relative;
   display: flex;
-  justify-content: center;
-  margin: 2rem 0rem;
-`;
-const Slink = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  margin-right: 2rem;
-  text-decoration: none;
-  backgound: linear-gradient(35deg, #494949, #313131);
-  width: 6rem;
-  height: 6rem;
-  cursor: pointer;
-  transform: scale(0.8);
-  h4{
-    color: white;
-    font-size: 1rem;
-  }
-  svg {
-    color: black;
-    font-size: 1.5rem;
-  }
+  max-width: 100%;
+  flex-wrap: wrap;
+  z-index:1;
+`;
 
-  &.active{
-    background: linear-gradient(to right, #f27121, #e94057);
+const VegetablesDiv = styled.div`
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    /* background-color: black; */
+    background-repeat: no-repeat;
+    background-image: url(${props => props.img});
+    background-size: 80px;
+    transform: rotate(0deg) translateX(-150px) rotate(0deg);
+    -webkit-filter: saturate(1);
+    filter: saturate(1);
+    transition: transform 1.3s, -webkit-filter 1.3s, filter 1.3s;
+    top: -23px;
+    left: 180px;
+`;
 
-    svg{
-      color: black;
-    }
+
+const Vegetables = styled.div`
+  position:relative;
+  width:300px;
+  height:300px;
+  margin:30px;
+  border-radius:150px;
+  background: ${props => props.colors[0]};
+  opacity: 0.77;
+  outline: 6px solid ${props => props.colors[1]};
+  transition: opacity 1.3s, outline 1.3s;
+  :hover ${VegetablesDiv} {
+    transform: rotate(87deg) translateX(270px) rotate(-87deg);
+    -webkit-filter: saturate(1.2);
+    filter: saturate(1.2);
   }
+  :hover {
+    opacity: 0.95;
+    outline: 6px solid ${props => props.colors[2]};
+    cursor: pointer;
+  }
+`;
+
+const Content = styled.div`
+text-align: center;
+transition: 0.5s;
+font-family: 'Marck Script', cursive;
+font-size: 60px;
+line-height: 300px;
+font-weight: bold;
+color: ${props => props.colorText};
+transition: font-size 0.5s;
+:hover {
+  font-size: 68px;
+}
 `;
 
 export default Category
