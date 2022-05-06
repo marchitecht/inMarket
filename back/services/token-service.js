@@ -21,7 +21,7 @@ class TokenService {
       },
     });
     if (isTokenInDb) {
-      isTokenInDb.update({ refreshToken });
+      return isTokenInDb.update({ refreshToken });
     }
     const token = Token.create({ userId, refreshToken });
     return token;
@@ -55,6 +55,7 @@ class TokenService {
   }
 
   async findToken(refreshToken) {
+    console.log('refreshTokeninFIND ==>', refreshToken);
     const token = await Token.findOne({
       where: {
         refreshToken,

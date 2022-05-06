@@ -22,11 +22,16 @@ const errorMiddleware = require('./middlewares/error.middleware');
 const indexRouter = require('./routes');
 const authRouter = require('./routes/auth.router');
 
-const PORT = process.env.PORT ?? 3001;
+const PORT = process.env.PORT ?? 5000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+  {
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+  },
+));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public')));

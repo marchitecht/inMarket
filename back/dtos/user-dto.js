@@ -4,6 +4,6 @@ module.exports = class UserDto {
     this.lastName = model.lastName;
     this.email = model.email;
     this.id = model.id;
-    this.isActivated = model.isActivated;
+    this.isActivated = model.isActivated || false;
   }
 };

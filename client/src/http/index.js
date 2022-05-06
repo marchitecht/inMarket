@@ -1,12 +1,15 @@
 import axios from 'axios'
-import('dotenv').config()
+
 
 const $api = axios.create({
     withCredentials: true,
-    baseURL: process.env.BACK_URL,
+    baseURL: 'http://localhost:5000/',
+
 })
 
 $api.interceptors.request.use(config => {
+    // eslint-disable-next-line no-unused-expressions
+   
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     return config
 })

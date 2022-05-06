@@ -8,16 +8,29 @@ import Fruits from "./components/Fruits";
 import Bread from "./components/Bread";
 import Berries from "./components/Berries";
 import {MdPriceChange} from 'react-icons/md'
-
+import LoginForm from './components/LoginForm'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "./redux/reducers/authReducer";
 function App() {
+  const user = useSelector(store => store.authReducer.user)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      dispatch(checkAuth())
+    }
+  }, [])
   return (
     <div className="App">
       <BrowserRouter>
       <Nav>
         <Logo to={'/'}>Price <GiKnifeFork />Hunter</Logo>
+        <div>{user ? `Пользователь ${user.email} в системе` : "Авторизуйтесь"}</div>
       </Nav>      
         <Pages />
         <Routes>
+          <Route path='/auth/signin' element={<LoginForm />}></Route>
         <Route path="/" element={<Category />} />
         <Route path="/vegetables" element={<Vegetables />} />
         <Route path="/fruits" element={<Fruits />} />

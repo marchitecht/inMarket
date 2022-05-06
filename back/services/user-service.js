@@ -9,11 +9,15 @@ const ApiError = require('../exceptions/api-error');
 class UserService {
   async refresh(refreshToken) {
     if (!refreshToken) {
+      console.log('NO REFRESH TOKEN');
       throw ApiError.unauthorizedError();
     }
-    const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
+    const userData = await tokenService.validateRefreshToken(refreshToken);
+    console.log('userDATA --> ', userData);
+    console.log('TokenFromDB --> ', tokenFromDb);
     if (!tokenFromDb || !userData) {
+      console.log('NO NEEDED THINGS');
       throw ApiError.unauthorizedError();
     }
     const user = await User.findByPk(userData.id);
@@ -49,7 +53,7 @@ class UserService {
     tokenService.saveToken(userDto.id, tokens.refreshToken);
     return {
       ...tokens,
-      user: userDto,
+      user: { ...userDto },
     };
   }
 
@@ -82,7 +86,7 @@ class UserService {
       tokenService.saveToken(userDto.id, tokens.refreshToken);
       return {
         ...tokens,
-        user: userDto,
+        user: { ...userDto },
       };
     }
   }
