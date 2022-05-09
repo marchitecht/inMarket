@@ -1,21 +1,23 @@
-import Pages from "./pages/Pages";
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import Pages from "../src/pages/Pages";
+import { Link, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
-import {GiKnifeFork} from 'react-icons/gi'
-import Search from "./components/Search";
-import Footer from "./components/Footer";
-
-import Vegetables from "./components/Vegetables";
-import Fruits from "./components/Fruits";
-import Bread from "./components/Bread";
-import Berries from "./components/Berries";
-import {MdPriceChange} from 'react-icons/md'
-import LoginForm from './components/LoginForm'
+import DetailedOrder from "./components/vendorDashboard/modules/DetailedOrder/index";
+import Orders from "./components/vendorDashboard/modules/Orders/index";
+import { Layout, Image } from "antd";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import SideMenu from "./components/vendorDashboard/sideItems";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/reducers/authReducer";
-import Category from "./components/Category";
+
+const { Sider, Content, Footer } = Layout;
+
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
   const user = useSelector(store => store.authReducer.user)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -26,28 +28,45 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <BrowserRouter>
-      <Nav>
-        <Logo to={'/'}>Price <GiKnifeFork />Hunter</Logo>
-        <Search/> 
-        <Container>
-        <SignIn>Вход</SignIn>
-        <SignUp>Регистрация</SignUp>
-        <div>{user ? `Пользователь ${user.email} в системе` : "Авторизуйтесь"}</div>    
-        </Container>
-      </Nav>    
-      <Routes>
-          <Route path='/auth/signin' element={<LoginForm />}></Route>
-        <Route path="/" element={<Category/>} />
-        <Route path="/vegetables" element={<Vegetables />} />
-        <Route path="/fruits" element={<Fruits />} />
-        <Route path="/bread" element={<Bread />} />
-        <Route path="/berries" element={<Berries />} />
-        </Routes>  
-        <Footer />
-        
-       
-      </BrowserRouter>
+      <Layout>
+        {location.pathname.includes("vendor") ? (
+          <Sider style={{ height: "100vh", backgroundColor: "white" }}>
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
+              preview={false}
+            />
+            <SideMenu/>
+          </Sider>
+        ) : (
+          <Nav>
+            <Logo
+              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
+              to={"/"}
+            >
+              inMarket
+            </Logo>
+            <Container>
+              <SignIn>Вход</SignIn>
+              <SignUp>Регистрация</SignUp>
+            </Container>
+          </Nav>
+        )}
+        <Layout>
+          {location.pathname.includes("vendor") ? (
+            <Content style={{ background: "black" }}>
+              <Routes>
+                <Route path="/vendor/orders" element={<Orders />} />
+                <Route path="/vendor/orders/:id" element={<DetailedOrder />} />
+              </Routes>
+            </Content>
+          ) : (
+            <Pages />
+          )}
+        <Footer style={{ textAlign: "center" }}>
+          inMarket FoodTech Startup 2022
+        </Footer>
+        </Layout>
+      </Layout>
     </div>
   );
 }
@@ -100,4 +119,6 @@ padding-right:20px;
 padding-bottom:35px;
 `
 
-export default App;
+
+
+export default App

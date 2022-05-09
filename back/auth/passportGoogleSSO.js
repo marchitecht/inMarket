@@ -1,4 +1,5 @@
 const passport = require('passport');
+const DtoUser = require('../dtos/user-dto');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { User } = require('../db/models');
 const UserDto = require('../dtos/user-dto');
@@ -23,7 +24,7 @@ passport.use(
         googleId: profile.id,
         isActivated: true,
       };
-      console.log(defaultUser);
+
       const user = await User.findOrCreate({
         where: { googleId: profile.id },
         defaults: { ...defaultUser },
@@ -32,7 +33,10 @@ passport.use(
           console.log('Problem signing in', err);
           cb(err, null);
         });
-      if (user[0]) return cb(null, user[0]);
+      const dtoUser = new DtoUser(defaultUser);
+      console.log(dtoUser);
+      console.log(user);
+      if (user && user[0]) return cb(null, user && user[0]);
     },
   ),
 );

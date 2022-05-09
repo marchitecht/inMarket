@@ -1,0 +1,21 @@
+
+.ant-btn-primary{
+  background-color: #3fc060 !important;
+  border-color: #3fc060 !important;
+}
+
+.ant-pagination-item-active{
+  border-color: #3fc060 !important;
+}
+li.ant-pagination-item-active a {
+  color: #3fc060 !important;
+}
+.ant-layout {
+   background: transparent; 
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

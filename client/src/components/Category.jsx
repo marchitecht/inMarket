@@ -43,7 +43,7 @@ const categories = [{
 },]
 
 function Category() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
 <>
 <Background/>
@@ -75,7 +75,7 @@ function Category() {
   align-items: center;
   max-width: 100%;
   flex-wrap: wrap;
-  z-index:1;
+  z-index: 1;
 `;
 
 const VegetablesDiv = styled.div`
@@ -131,4 +131,4 @@ transition: font-size 0.5s;
 }
 `;
 
-export default Category
+export default Category;
