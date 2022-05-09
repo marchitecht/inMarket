@@ -1,7 +1,9 @@
 const ApiError = require('../exceptions/api-error');
 const tokenService = require('../services/token-service');
 
-module.exports = function (req, res, next) {
+// eslint-disable-next-line func-names
+// eslint-disable-next-line consistent-return
+module.exports = async function (req, res, next) {
   try {
     const authorizationHeader = req.headers.authorization;
     if (!authorizationHeader) {
@@ -11,7 +13,7 @@ module.exports = function (req, res, next) {
     if (!accessToken) {
       return next(ApiError.unauthorizedError());
     }
-    const userData = tokenService.validateAccessToken(accessToken);
+    const userData = await tokenService.validateAccessToken(accessToken);
     if (!userData) {
       return next(ApiError.unauthorizedError());
     }
