@@ -16,13 +16,11 @@ require('./auth/passportGoogleSSO');
 
 require('./db/models/user');
 
-const api = require('./api');
-
-const errorMiddleware = require('./middlewares/error.middleware');
-const indexRouter = require('./routes');
+const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.router');
-
-const PORT = process.env.PORT ?? 3001;
+const indexRouter = require('./routes');
+const errorMiddleware = require('./middlewares/error.middleware');
+const api = require('./api');
 
 const app = express();
 
@@ -33,6 +31,11 @@ app.use(express.static(path.join(process.env.PWD, 'public')));
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [process.env.COOKIE_KEY],
+}));
 
 app.use(session({
   name: 'sid',

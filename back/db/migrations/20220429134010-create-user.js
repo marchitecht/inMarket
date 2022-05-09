@@ -43,6 +43,7 @@ module.exports = {
       },
       activationLink: {
         type: Sequelize.STRING,
+      },
       googleId: {
         type: Sequelize.STRING,
         allowNull: true,
