@@ -26,12 +26,6 @@ function Background() {
 
   return (
     <>
- {/*    <FormStyle onSubmit={submitHandler}>
-    <div>
-      <FaSearch></FaSearch>
-      
-    </div>
-  </FormStyle> */}
   <Container>
     <Back1 background={photos[curPhotoIndex]} onAnimationIteration={animationHandler}></Back1>
   </Container>

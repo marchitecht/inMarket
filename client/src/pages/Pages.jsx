@@ -18,6 +18,7 @@ import Berries from "../components/Berries";
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
       <Route path="/berries" element={<Berries />} />
+      {/* <Route path="/test" element={<ProductsExemple />} /> */}
     </Routes>
   )
 }

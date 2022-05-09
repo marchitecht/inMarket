@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import icon from '../img/footerIcons/face.png'
+import icon from '../img/footerIcons/lu.png'
 
 function Search () {
   const [input, setInput] = useState('');
@@ -33,7 +33,7 @@ const Container = styled.div`
  height: 40px;
  width: 23vw;
  border-radius: 10px;
- background-color: #7a7a7a;
+ background-color: white;
 `
 const InputStyle = styled.form`
    width: 20vw;
@@ -42,9 +42,9 @@ const InputStyle = styled.form`
     width: 20vw;
     height: 30px;
     border: none;
-    background-color: #7a7a7a;
+    background-color: white;
     font-size: 22px;
-    color: white;
+    color: black;
    }
    input:focus { outline: none; }
 `
@@ -52,8 +52,10 @@ const InputStyle = styled.form`
 const Icon = styled.div`
   background-image: url(${icon});
   background-size: 20px;
-  width: 20px;
+  width: 30px;
   height: 20px;
+  color: white;
+  background-repeat: no-repeat;
 `
  
 export default Search;

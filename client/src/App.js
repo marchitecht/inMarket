@@ -12,6 +12,7 @@ import { checkAuth } from "./redux/reducers/authReducer";
 
 const { Sider, Content, Footer } = Layout;
 
+
 function App() {
   const location = useLocation();
 
@@ -76,13 +77,14 @@ const Logo = styled(Link)`
   font-size: 2rem;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
-  color: #5d5d5d;
+  color: white;
   svg{
   font-size: 4rem;
 }
 `;
 const Nav = styled.div`
-color: #5d5d5d;
+background: rgb(166,8,255);
+background: linear-gradient(90deg, rgba(166,8,255,1) 21%, rgba(223,57,244,1) 100%);
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -101,12 +103,14 @@ transition: opacity 0.3s;
 `
 const SignIn = styled.div`
 margin-right: 2rem;
+color: white;
 font-family: 'Overpass', sans-serif;
 font-size: 25px;
 cursor: pointer;
 `
 const SignUp = styled.div`
 font-family: 'Overpass', sans-serif;
+color: white;
 font-size: 25px;
 cursor: pointer;
 `
