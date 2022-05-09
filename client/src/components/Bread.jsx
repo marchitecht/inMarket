@@ -459,7 +459,7 @@ const ArrowRight = styled.div`
 const Menu = styled.div`
   font-size: 25px;
   position: absolute;
-  gap: 25px;
+  gap: 70px;
   left: 520px;
   left: 220px;
   width: 1070px;
@@ -478,4 +478,5 @@ const Product = styled.div`
   cursor: pointer;
   font-family: 'Overpass', sans-serif;
   color: ${props => props.selected ? '#9932cc' : 'black'};
+  text-align: center;
 `;
