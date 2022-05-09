@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import {useNavigate} from 'react-router-dom';
 import tomato1 from '../img/tomato.png';
@@ -6,6 +7,7 @@ import berries from '../img/berries.png';
 import bread from '../img/bread.png';
 import pear from '../img/pear.png';
 import Background from './Background';
+import { getCategories } from '../redux/reducers/productsReducer';
 
 
 const categories = [{
@@ -43,6 +45,10 @@ const categories = [{
 },]
 
 function Category() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [])
   const navigate = useNavigate()
   return (
 <>

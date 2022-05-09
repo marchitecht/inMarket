@@ -55,11 +55,11 @@ class TokenService {
     return token;
   }
 
-  async findToken(refreshToken) {
+  async findToken(refreshToken, userId) {
     console.log('refreshTokeninFIND ==>', refreshToken);
     const token = await Token.findOne({
       where: {
-        refreshToken,
+        userId, refreshToken,
       },
     });
     return token;

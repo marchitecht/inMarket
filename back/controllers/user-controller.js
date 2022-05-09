@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 const { validationResult } = require('express-validator');
-const { use } = require('passport');
 const userService = require('../services/user-service');
 const ApiError = require('../exceptions/api-error');
 
