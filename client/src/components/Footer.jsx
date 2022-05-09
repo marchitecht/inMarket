@@ -36,6 +36,7 @@ const navigate = useNavigate()
            <Icons onClick={()=> navigate(el.link)} icon={el.img} name={el.name}></Icons>
          )
        })}
+     <Test onClick={()=> navigate('/test')}>Test</Test>
      </IconsContainer>
      <DataContainer>© {new Date().getFullYear()} Copyright Text</DataContainer>
     </FooterDiv>
@@ -103,6 +104,11 @@ cursor: pointer;
   opacity: 0.9;
   border-radius: 5px;
 }
+`
+const Test = styled.div`
+  cursor: pointer;
+  height: 20px;
+  width: 30px;
 `
 
 export default Footer;

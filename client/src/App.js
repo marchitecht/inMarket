@@ -5,6 +5,7 @@ import {MdPriceChange} from 'react-icons/md'
 import Search from "./components/Search";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <div className="App">
@@ -16,7 +17,7 @@ function App() {
         <SignIn>Вход</SignIn>
         <SignUp>Регистрация</SignUp>
         </Container>
-      </Nav>      
+      </Nav>     
         <Pages />
         <Footer />
       </BrowserRouter>

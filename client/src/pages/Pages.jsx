@@ -4,6 +4,7 @@ import Berries from '../components/Berries';
 import Bread from '../components/Bread';
 import Category from '../components/Category';
 import Fruits from '../components/Fruits';
+import ProductsExemple from '../components/ProductsExemple';
 import Vegetables from '../components/Vegetables';
 
 function Pages() {
@@ -16,6 +17,7 @@ function Pages() {
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
       <Route path="/berries" element={<Berries />} />
+      <Route path="/test" element={<ProductsExemple />} />
     </Routes>
   )
 }
