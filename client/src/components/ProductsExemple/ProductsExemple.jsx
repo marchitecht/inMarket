@@ -7,55 +7,6 @@ const products = [{
   price: 1000,
   desc: 'good',
   userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798874x3.jpg',
-  price: 1500,
-  desc: 'bad',
-  userImg: 'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
-  price: 1000,
-  desc: 'good',
-  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798874x3.jpg',
-  price: 1500,
-  desc: 'bad',
-  userImg: 'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
-  price: 1000,
-  desc: 'good',
-  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798874x3.jpg',
-  price: 1500,
-  desc: 'bad',
-  userImg: 'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
-  price: 1000,
-  desc: 'good',
-  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
-},{
-  name: 'bakinskie pomidori',
-  link: '/',
-  img: 'https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798874x3.jpg',
-  price: 1500,
-  desc: 'bad',
-  userImg: 'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
 },]
 
 function ProductsExemple() {
@@ -97,22 +48,22 @@ const Container = styled.div`
 
 const Card = styled.div`
 position: relative;
- /* margin-top: 20px; */
- /* background-color: #3d3d3d; */
  width: 800px;
  height: 200px; 
 `
 const ProductPhoto = styled.div`
 position: absolute;
+box-shadow: 20px 20px 50px #585858;
  background-color: #bb8888;
  background-image: url(${props => props.img});
+ background-repeat: no-repeat;
  background-size: 130%;
  background-position: center;
  display: flex;
  align-items: center;
- width: 200px;
- height: 200px;
- border-radius: 100%;
+ width: 300px;
+ height: 400px;
+ border-radius: 15px;
  left: -100px;
  z-index: 3;
 `
@@ -120,12 +71,13 @@ const UserPhoto = styled.div`
 position: absolute;
 background-color: #bb8888;
 background-image: url(${props => props.userImg});
+background-repeat: no-repeat;
  background-size: 130%;
  background-position: center;
  display: flex;
  align-items: center;
- width: 200px;
- height: 200px;
+ width: 60px;
+ height: 60px;
  border-radius: 100%;
  right: -100px;
  z-index: 3;
