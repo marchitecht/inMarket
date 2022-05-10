@@ -64,9 +64,9 @@ passport.deserializeUser(async ({ user: { id } }, cb) => {
     });
   if (userInDb) {
     await userController.refresh();
-    // const userDto = await new UserDto({ ...userInDb.dataValues });
+    const userDto = await new UserDto({ ...userInDb.dataValues });
 
-    // console.log('Deserialized user', userData);
-    // cb(null, userData);
+    console.log('Deserialized user', userData);
+    cb(null, userData);
   }
 });
