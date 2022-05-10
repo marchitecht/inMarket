@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 
 export const BoxContainer = styled.div`
-  width: 87%;
+  width: 100%;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15rem;
+  margin-top: 10vh;
 `;
 export const FormContainer = styled.div`
   width: 100%;
@@ -52,8 +53,8 @@ export const Input = styled.input`
 `;
 export const SubmitButton = styled.button`
   width:100%;
-  padding: 20px 40%;
-  margin: 0.7em;
+  padding: 20px 20%;
+  margin: 0.6em;
   color: #fff;
   font-size: 20px;
   font-weight:800;

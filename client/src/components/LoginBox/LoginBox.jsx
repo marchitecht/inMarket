@@ -84,12 +84,12 @@ const InnerContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  padding: 8rem;
 `;
 
 const BoxContainer = styled.div`
-  width: 70rem;
-  min-height: 65vh;
+  width: 40rem;
+  min-height: 35vh;
   display: flex;
   flex-direction: column;
   border-radius: 19px;
@@ -97,17 +97,17 @@ const BoxContainer = styled.div`
   box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
   position: relative;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10% auto;
 `;
 const TopContainer = styled.div`
   width: 100%;
-  height: 250px;
+  height: 18rem;
   flex-direction: column;
   display: flex;
   justify-content: flex-end;
-  padding: 0 1.8em;
+  padding: 0 5em;
   padding-bottom: 5em;
+  margin: 2em;
 `;
 
 const BackDrop = styled(motion.div)`

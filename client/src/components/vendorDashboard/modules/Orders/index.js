@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Orders = () =>{
   const navigate = useNavigate();
   const renderOrderStatus = (orderStatus)=>{
-    if(orderStatus === 'Подтвержден'){
+    if(orderStatus === 'Доставлено'){
       return <Tag color={'green'}>{orderStatus}</Tag>
     }
     if(orderStatus === 'Собирается'){
