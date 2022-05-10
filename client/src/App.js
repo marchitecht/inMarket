@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/reducers/authReducer";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+import AppRoutes from "./components/AppRoutes";
 
 const { Sider, Content } = Layout;
 
