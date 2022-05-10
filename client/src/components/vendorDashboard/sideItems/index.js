@@ -22,13 +22,9 @@ const SideMenu = () =>{
     },
   ];
 
-  const onMenuItemClicked = (menuItem) => {
-    console.log(menuItem);
-    navigate(`vendor/${menuItem.key}`)
-  }
-
+ 
   return (
-    <Menu items={menuItems} onClick={onMenuItemClicked}/>
+    <Menu items={menuItems} onClick={(menuItem)=> navigate(`vendor/${menuItem.key}`)}/>
   )
 }
 export default SideMenu

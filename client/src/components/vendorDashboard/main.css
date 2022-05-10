@@ -19,3 +19,12 @@ footer{
   left: 0;
   width: 100%;
 }
+.ant-menu-item-selected{
+  background-color: #3fc060 !important;
+}
+.ant-menu-item-selected span{
+  color: white !important;
+}
+.ant-menu-item-active {
+  color: #3fc060 !important;
+}
