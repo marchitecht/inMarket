@@ -1,13 +1,13 @@
 import styled, { keyframes } from "styled-components";
-import borodino from "../img/categoryImg/bread/borodino.jpg";
-import czelnozernovoj from "../img/categoryImg/bread/czelnozernovoj.jpg";
-import pshenichniy from "../img/categoryImg/bread/pshenichniy.jpg";
-import rjanoy from "../img/categoryImg/bread/rjanoy.jpg";
-import chiabatta from "../img/categoryImg/bread/chiabatta.jpg";
-import kruas from "../img/categoryImg/bread/kruas.jpg";
-import kukur from "../img/categoryImg/bread/kukur.jpg";
-import pita from "../img/categoryImg/bread/pita.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import borodino from "../../img/categoryImg/bread/borodino.jpg";
+import czelnozernovoj from "../../img/categoryImg/bread/czelnozernovoj.jpg";
+import pshenichniy from "../../img/categoryImg/bread/pshenichniy.jpg";
+import rjanoy from "../../img/categoryImg/bread/rjanoy.jpg";
+import chiabatta from "../../img/categoryImg/bread/chiabatta.jpg";
+import kruas from "../../img/categoryImg/bread/kruas.jpg";
+import kukur from "../../img/categoryImg/bread/kukur.jpg";
+import pita from "../../img/categoryImg/bread/pita.jpg";
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

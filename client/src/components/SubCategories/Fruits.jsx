@@ -1,13 +1,13 @@
 import styled, { keyframes } from "styled-components";
-import an from "../img/categoryImg/fruts/an.jpg";
-import apple from "../img/categoryImg/fruts/apple.jpg";
-import bananas from "../img/categoryImg/fruts/bananas.jpg";
-import mango from "../img/categoryImg/fruts/mango.jpeg";
-import oranges from "../img/categoryImg/fruts/oranges.jpg";
-import pear from "../img/categoryImg/fruts/pear.jpg";
-import pers from "../img/categoryImg/fruts/pers.jpg";
-import kiwi from "../img/categoryImg/fruts/kiwi.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import an from "../../img/categoryImg/fruts/an.jpg";
+import apple from "../../img/categoryImg/fruts/apple.jpg";
+import bananas from "../../img/categoryImg/fruts/bananas.jpg";
+import mango from "../../img/categoryImg/fruts/mango.jpeg";
+import oranges from "../../img/categoryImg/fruts/oranges.jpg";
+import pear from "../../img/categoryImg/fruts/pear.jpg";
+import pers from "../../img/categoryImg/fruts/pers.jpg";
+import kiwi from "../../img/categoryImg/fruts/kiwi.jpg";
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

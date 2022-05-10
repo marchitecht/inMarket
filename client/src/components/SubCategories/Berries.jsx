@@ -1,13 +1,13 @@
 import styled, { keyframes } from "styled-components";
-import cherry from '../img/categoryImg/berry/cherry.jpg'
-import ez from '../img/categoryImg/berry/ez.jpg'
-import gol from '../img/categoryImg/berry/gol.jpg'
-import mal from '../img/categoryImg/berry/mal.jpg'
-import smor from '../img/categoryImg/berry/smor.jpg'
-import str from '../img/categoryImg/berry/str.jpg'
-import kryzhovnik from '../img/categoryImg/berry/kryzhovnik.jpg'
-import zemlyanika from '../img/categoryImg/berry/zemlyanika.jpg'
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import cherry from '../../img/categoryImg/berry/cherry.jpg'
+import ez from '../../img/categoryImg/berry/ez.jpg'
+import gol from '../../img/categoryImg/berry/gol.jpg'
+import mal from '../../img/categoryImg/berry/mal.jpg'
+import smor from '../../img/categoryImg/berry/smor.jpg'
+import str from '../../img/categoryImg/berry/str.jpg'
+import kryzhovnik from '../../img/categoryImg/berry/kryzhovnik.jpg'
+import zemlyanika from '../../img/categoryImg/berry/zemlyanika.jpg'
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,13 +1,13 @@
 import styled, { keyframes } from "styled-components";
-import tomato from "../img/categoryImg/vej/pom.jpg";
-import cabach from "../img/categoryImg/vej/cabach.jpg";
-import morc from "../img/categoryImg/vej/morc.jpg";
-import capusta from "../img/categoryImg/vej/capusta.jpg";
-import pot from "../img/categoryImg/vej/pot.jpg";
-import ogur from "../img/categoryImg/vej/ogur.jpg";
-import svekla from "../img/categoryImg/vej/svekla.jpg";
-import perec from "../img/categoryImg/vej/perec.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import tomato from "../../img/categoryImg/vej/pom.jpg";
+import cabach from "../../img/categoryImg/vej/cabach.jpg";
+import morc from "../../img/categoryImg/vej/morc.jpg";
+import capusta from "../../img/categoryImg/vej/capusta.jpg";
+import pot from "../../img/categoryImg/vej/pot.jpg";
+import ogur from "../../img/categoryImg/vej/ogur.jpg";
+import svekla from "../../img/categoryImg/vej/svekla.jpg";
+import perec from "../../img/categoryImg/vej/perec.jpg";
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
