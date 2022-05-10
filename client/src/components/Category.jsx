@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import {useNavigate} from 'react-router-dom';
 import tomato1 from '../img/tomato.png';
@@ -6,15 +7,16 @@ import berries from '../img/berries.png';
 import bread from '../img/bread.png';
 import pear from '../img/pear.png';
 import Background from './Background';
+import { getCategories } from '../redux/reducers/productsReducer';
 
 
-const categories = [{
+const categoriees = [{
   img: tomato1,
   color1: '#f0a792',
   color2: '#bc6b53',
   color3: '#e96841',
   color4: '#5e2020',
-  link: '/vegetables',
+  link: '/1',
   name: 'Овощи',
 },{
   img: berries,
@@ -43,12 +45,18 @@ const categories = [{
 },]
 
 function Category() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const categories = useSelector(store => store.productsReducer.categories)
+  console.log('check --->', categories);
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [])
+  const navigate = useNavigate()
   return (
 <>
 <Background/>
 <Container>
-{categories.map((el) => {
+{categoriees.map((el) => {
   return (
   <>
   <Vegetables onClick={()=> navigate(el.link)} colors={[el.color1, el.color2, el.color3]}> 

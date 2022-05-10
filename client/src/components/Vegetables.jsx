@@ -10,6 +10,9 @@ import perec from "../img/categoryImg/vej/perec.jpg";
 import purpleArrow from "../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 let allVeggies = [
   {
@@ -57,6 +60,11 @@ let allVeggies = [
 const staticAllVegies = [...allVeggies];
 
 function Vegetables() {
+  const dispatch = useDispatch()
+  const {categoryId} = useParams()
+  useEffect(() => {
+    dispatch(getCategoryDetail(categoryId))
+  })
   const [vegies, setVegies] = useState(allVeggies);
   const [goRight, setGoRight] = useState(false);
   const [goLeft, setGoLeft] = useState(false);

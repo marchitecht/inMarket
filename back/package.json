@@ -41,6 +41,7 @@
     "passport-session": "^1.0.2",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
+    "react-redux": "^8.0.1",
     "redux-thunk": "^2.4.1",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1",

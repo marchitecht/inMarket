@@ -53,15 +53,6 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
-async function roleCreate() {
-  await Role.create({ type: 'Покупатель' });
-  await Role.create({ type: 'Продавец' });
-  await Role.create({ type: 'Курьер' });
-  await Role.create({ type: 'Администратор' });
-}
-
-// roleCreate();
-
 app.use(passport.initialize());
 app.use(passport.session());
 

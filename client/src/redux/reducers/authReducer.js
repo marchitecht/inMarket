@@ -22,7 +22,6 @@ const initialState = {
   export const login =  (email, password) => async (dispatch) => {
       try {
         const response = await AuthService.login(email, password)
-        console.log(response);
         localStorage.setItem('token', response.data.accessToken)
         dispatch({type: 'LOGIN_USER', payload: response.data})
       } catch (error) {

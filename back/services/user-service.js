@@ -12,8 +12,8 @@ class UserService {
       console.log('NO REFRESH TOKEN');
       throw ApiError.unauthorizedError();
     }
-    const tokenFromDb = await tokenService.findToken(refreshToken);
     const userData = await tokenService.validateRefreshToken(refreshToken);
+    const tokenFromDb = await tokenService.findToken(refreshToken, userData.id);
     console.log('userDATA --> ', userData);
     console.log('TokenFromDB --> ', tokenFromDb);
     if (!tokenFromDb || !userData) {
@@ -45,9 +45,11 @@ class UserService {
     if (!isPasswordCorrect) {
       throw ApiError.BadRequest('Пароль введен неверно. Проверьте правильность введенных данных.');
     }
+
     const userDto = new UserDto(candidate);
     const tokens = await tokenService.generateTokens({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
+    await candidate.update({ isOnline: true });
     return { ...tokens, user: userDto };
   }
 

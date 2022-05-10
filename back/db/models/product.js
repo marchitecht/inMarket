@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       User, Subcategory, Cart, Review, Favourite,
     }) {
       this.belongsTo(User, { foreignKey: 'userId' });
-      this.hasMany(User, { through: Favourite, foreignKey: 'productId' });
+      this.belongsToMany(User, { through: Favourite, foreignKey: 'id' });
       this.hasMany(Review, { foreignKey: 'customerId' });
       this.belongsTo(Subcategory, { foreignKey: 'subCategoryId' });
       this.hasMany(Cart, { foreignKey: 'productId' });

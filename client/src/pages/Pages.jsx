@@ -7,17 +7,21 @@ import Fruits from "../components/Fruits";
 import Bread from "../components/Bread";
 import Berries from "../components/Berries";
 
- function Pages() {
+function Pages() {
   const location = useLocation();
 
   return (
     <Routes location={location} key={location.pathname}>
-      <Route path="/" element={<Category />} />
-      <Route path="/signin" element={<LoginBox />} />
+      <Route path="/" element={<Category />} >
+        <Route path="/categories" element={<Category />}>
+          <Route path="/:categoryId" element={<Vegetables />} />
+        </Route>
+      </Route>
+      {/* <Route path="/signin" element={<LoginBox />} />
       <Route path="/vegetables" element={<Vegetables />} />
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
-      <Route path="/berries" element={<Berries />} />
+      <Route path="/berries" element={<Berries />} /> */}
       {/* <Route path="/test" element={<ProductsExemple />} /> */}
     </Routes>
   )
