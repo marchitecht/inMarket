@@ -1,63 +1,10 @@
 import styled, { keyframes } from "styled-components";
-// import tomato from "../img/categoryImg/vej/pom.jpg";
-// import cabach from "../img/categoryImg/vej/cabach.jpg";
-// import morc from "../img/categoryImg/vej/morc.jpg";
-// import capusta from "../img/categoryImg/vej/capusta.jpg";
-// import pot from "../img/categoryImg/vej/pot.jpg";
-// import ogur from "../img/categoryImg/vej/ogur.jpg";
-// import svekla from "../img/categoryImg/vej/svekla.jpg";
-// import perec from "../img/categoryImg/vej/perec.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
 import { useMemo, useState,useEffect } from "react";
 import { useDispatch, useSelector,useLocation, useNavigate } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getCategory } from "../redux/reducers/productsReducer";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css'
-
-// let staticVegies = [
-//   {
-//     img: tomato,
-//     link: "/vegetables/tomatos",
-//     name: "Помидоры",
-//   },
-//   {
-//     img: morc,
-//     link: "/vegetables/carrot",
-//     name: "Морковь",
-//   },
-//   {
-//     img: cabach,
-//     link: "/vegetables/zucchini",
-//     name: "Кабачки",
-//   },
-//   {
-//     img: capusta,
-//     link: "/vegetables/cabbage",
-//     name: "Капуста",
-//   },
-//   {
-//     img: pot,
-//     link: "/vegetables/potato",
-//     name: "Картофель",
-//   },
-//   {
-//     img: ogur,
-//     link: "/vegetables/cucumbers",
-//     name: "Огурцы",
-//   },
-//   {
-//     img: svekla,
-//     link: "/vegetables/beet",
-//     name: "Свекла",
-//   },
-//   {
-//     img: perec,
-//     link: "/vegetables/pepper",
-//     name: "Перец",
-//   },
-// ];
-
 
 function Vegetables() {
   const {categoryName} = useParams()
@@ -85,7 +32,7 @@ function Vegetables() {
                 <Card>
                 <Link to={'/subcategory/'+subcategory.id}>
                   <p>{subcategory.subCategoryName}</p>
-                  <img src={`http://localhost:5000/${subcategory.subCategoryImg}`} alt={subcategory.subCategoryName} />
+                  <img src={`http://localhost:5000${subcategory.subCategoryImg}`} alt={subcategory.subCategoryName} />
                   <Gradient />
                   </Link>
                 </Card>
@@ -110,8 +57,8 @@ overflow: hidden;
 position: relative;
 transition: transform 1s both;
 :hover{
-  /* transform: translateY(-1.5rem) scale(1.03);
-  border-radius: 1rem; */
+  transform: translateY(-1.5rem) scale(1.03);
+  border-radius: 1rem;
   animation: moveToTop 0.2s ease-in-out both;
   }
 
