@@ -9,9 +9,10 @@ import { useEffect } from "react";
 import SideMenu from "./components/vendorDashboard/sideItems";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/reducers/authReducer";
+import Footer from "./components/Footer";
+import Search from "./components/Search";
 
-const { Sider, Content, Footer } = Layout;
-
+const { Sider, Content } = Layout;
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
             >
               inMarket
             </Logo>
+            <Search/>
             <Container>
               <SignIn>Вход</SignIn>
               <SignUp>Регистрация</SignUp>
@@ -63,10 +65,8 @@ function App() {
           ) : (
             <Pages />
           )}
-        <Footer style={{ textAlign: "center" }}>
-          inMarket FoodTech Startup 2022
-        </Footer>
         </Layout>
+       <Footer />
       </Layout>
     </div>
   );
@@ -122,7 +122,5 @@ right: 20px;
 padding-right:20px;
 padding-bottom:35px;
 `
-
-
 
 export default App

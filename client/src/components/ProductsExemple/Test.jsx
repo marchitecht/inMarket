@@ -1,7 +1,49 @@
 import React from "react";
 import './test.css';
 
+const products = [{
+  name: 'bakinskie pomidori',
+  link: '/',
+  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
+  price: 1000,
+  desc: 'good',
+  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
+},
+{
+  name: 'bakinskie pomidori',
+  link: '/',
+  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
+  price: 1000,
+  desc: 'good',
+  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
+},
+{
+  name: 'bakinskie pomidori',
+  link: '/',
+  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
+  price: 1000,
+  desc: 'good',
+  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
+},
+{
+  name: 'bakinskie pomidori',
+  link: '/',
+  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
+  price: 1000,
+  desc: 'good',
+  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
+},
+{
+  name: 'bakinskie pomidori',
+  link: '/',
+  img: 'https://delimanoua.azureedge.net/media/article/image/cache/580x436/a/-/a-28430_1.jpg',
+  price: 1000,
+  desc: 'good',
+  userImg: 'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp',
+},]
+
 function TestPage() {
+  
   return (
     <div className="card">
     <div className="card__item">
@@ -12,17 +54,22 @@ function TestPage() {
         <div className="card__text">
           <div className="social">
             <a className="social__item" href="#" target="_blank">
-              <i className="fab fa-facebook-f"></i>
+              <i className="like">Избранное</i>
             </a>
             <a className="social__item" href="#" target="_blank">
-              <i className="fab fa-twitter"></i>
+              <i className="cart">В корзину</i>
             </a>
           </div>
         </div>
       </div>
       <div className="card__info">
-        <div className="card__name">Помидоры </div>
-        <div className="card__prof">Цена</div>
+        <div>
+          <div className="card__name">Помидоры </div>
+          <div className="card__prof">Цена</div>
+        </div>
+        <div className="user_photo">
+          Фото
+        </div>
       </div>
     </div>
     </div>

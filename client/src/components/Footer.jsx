@@ -38,7 +38,7 @@ const navigate = useNavigate()
        })}
      <Test onClick={()=> navigate('/test')}>Test</Test>
      </IconsContainer>
-     <DataContainer>© {new Date().getFullYear()} Copyright Text</DataContainer>
+     <DataContainer>© {new Date().getFullYear()} inMarket FoodTech Startup</DataContainer>
     </FooterDiv>
    
     </>
