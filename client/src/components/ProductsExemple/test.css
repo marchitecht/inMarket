@@ -7,11 +7,14 @@
   align-items: center;
   margin: 150px 30px 0px 30px;
   flex-wrap: wrap;
+  height: 75vh;
+  overflow-y: scroll;
 }
 
 .card__item {
   width: 20vw;
   padding: 0 15px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
 }
@@ -30,12 +33,12 @@
 }
 
 .card__back {
-  position: absolute;
   background: rgb(166,8,255);
   background: linear-gradient(90deg, rgba(166,8,255,1) 21%, rgba(223,57,244,1) 100%);
   border-radius: 20px;
   width: 20vw;
   height: 20vw;
+  margin-top: -20vw;
   z-index: -1;
 }
 
@@ -134,10 +137,10 @@
 
 .social__item {
   text-decoration: none;
-  background-color: #fce38a;
-  color: #f38181;
+  background-color: #b68afc;
+  color: #3f3a7e;
   padding: 15px;
-  border-right: 1px solid #f9bd87;
+  border-right: 1px solid #6c7cd3;
   width: 40%;
   height: 30%;
   font-size: 80%;
@@ -150,6 +153,6 @@
 }
 
 .social__item:hover {
-  background-color: #f38181;
+  background-color: #d881f3;
   color: #fff;
 }
