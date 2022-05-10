@@ -1,7 +1,15 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 
 function Berries() {
+  const dispatch = useDispatch()
+  const {category} = useParams()
+  useEffect(() => {
+    dispatch(getCategory)
+  })
   return (
     <>
       <Container>

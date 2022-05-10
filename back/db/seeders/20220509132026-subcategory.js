@@ -49,8 +49,56 @@ module.exports = {
       {
         subCategoryName: 'Персики', subCategoryImg: '/img/subCategories/fruits/pers.jpg', categoryId: 2, createdAt: new Date(), updatedAt: new Date(),
       },
+      {
+        subCategoryName: 'Вишня', subCategoryImg: '/img/subCategories/berry/cherry.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Ежевика', subCategoryImg: '/img/subCategories/berry/ez.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Голубика', subCategoryImg: '/img/subCategories/berry/gol.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Крыжовник', subCategoryImg: '/img/subCategories/berry/kryzhovnik.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Малина', subCategoryImg: '/img/subCategories/berry/mal.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Смородина', subCategoryImg: '/img/subCategories/berry/smor.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Клубника', subCategoryImg: '/img/subCategories/berry/str.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Земляника', subCategoryImg: '/img/subCategories/berry/zemlyanika.jpg', categoryId: 3, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Бородинский', subCategoryImg: '/img/subCategories/bread/borodino.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Чиабатта', subCategoryImg: '/img/subCategories/bread/chiabatta.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Цельнозерновой хлеб', subCategoryImg: '/img/subCategories/bread/czelnozernovoj.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Круассаны', subCategoryImg: '/img/subCategories/bread/kruas.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Кукурузный хлеб', subCategoryImg: '/img/subCategories/bread/kukur.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Пита', subCategoryImg: '/img/subCategories/bread/pita.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Пшеничный', subCategoryImg: '/img/subCategories/bread/pshenichniy.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
+      {
+        subCategoryName: 'Ржаной', subCategoryImg: '/img/subCategories/bread/rjanoy.jpg', categoryId: 4, createdAt: new Date(), updatedAt: new Date(),
+      },
     ];
-    await queryInterface.bulkInsert('subcategories', subcategories);
+    await queryInterface.bulkInsert('Subcategories', subcategories);
   },
 
   async down(queryInterface, Sequelize) {
