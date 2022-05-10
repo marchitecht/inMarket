@@ -16,7 +16,7 @@ const categoriees = [{
   color2: '#bc6b53',
   color3: '#e96841',
   color4: '#5e2020',
-  link: '/1',
+  link: '/categories/vegetables',
   name: 'Овощи',
 },{
   img: berries,
@@ -24,7 +24,7 @@ const categoriees = [{
   color2: '#5355bc',
   color3: '#5241e9',
   color4: '#21205e',
-  link: '/berries',
+  link: '/categories/berries',
   name: 'Ягоды',
 },{
   img: bread,
@@ -32,7 +32,7 @@ const categoriees = [{
   color2: '#bca953',
   color3: '#e9bc41',
   color4: '#5e5320',
-  link: '/bread',
+  link: '/categories/bread',
   name: 'Хлеб',
 },{
   img: pear,
@@ -40,7 +40,7 @@ const categoriees = [{
   color2: '#a0bc53',
   color3: '#b7e941',
   color4: '#465e20',
-  link: '/fruits',
+  link: '/categories/fruits',
   name: 'Фрукты',
 },]
 

@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { body } = require('express-validator');
 const productController = require('../controllers/product-controller');
 
-route
+router.route('/:categoryName').get(productController.getCategory);
+
+router.route('/:categoryName/subcategories/:subCategoryName').get(productController.getProducts);
+
+module.exports = router;

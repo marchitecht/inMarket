@@ -1,71 +1,82 @@
 import styled, { keyframes } from "styled-components";
-import tomato from "../img/categoryImg/vej/pom.jpg";
-import cabach from "../img/categoryImg/vej/cabach.jpg";
-import morc from "../img/categoryImg/vej/morc.jpg";
-import capusta from "../img/categoryImg/vej/capusta.jpg";
-import pot from "../img/categoryImg/vej/pot.jpg";
-import ogur from "../img/categoryImg/vej/ogur.jpg";
-import svekla from "../img/categoryImg/vej/svekla.jpg";
-import perec from "../img/categoryImg/vej/perec.jpg";
+// import tomato from "../img/categoryImg/vej/pom.jpg";
+// import cabach from "../img/categoryImg/vej/cabach.jpg";
+// import morc from "../img/categoryImg/vej/morc.jpg";
+// import capusta from "../img/categoryImg/vej/capusta.jpg";
+// import pot from "../img/categoryImg/vej/pot.jpg";
+// import ogur from "../img/categoryImg/vej/ogur.jpg";
+// import svekla from "../img/categoryImg/vej/svekla.jpg";
+// import perec from "../img/categoryImg/vej/perec.jpg";
 import purpleArrow from "../img/footerIcons/purple_arrow.png";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getCategory } from "../redux/reducers/productsReducer";
 
-let allVeggies = [
-  {
-    img: tomato,
-    link: "/vegetables/tomatos",
-    name: "Помидоры",
-  },
-  {
-    img: morc,
-    link: "/vegetables/carrot",
-    name: "Морковь",
-  },
-  {
-    img: cabach,
-    link: "/vegetables/zucchini",
-    name: "Кабачки",
-  },
-  {
-    img: capusta,
-    link: "/vegetables/cabbage",
-    name: "Капуста",
-  },
-  {
-    img: pot,
-    link: "/vegetables/potato",
-    name: "Картофель",
-  },
-  {
-    img: ogur,
-    link: "/vegetables/cucumbers",
-    name: "Огурцы",
-  },
-  {
-    img: svekla,
-    link: "/vegetables/beet",
-    name: "Свекла",
-  },
-  {
-    img: perec,
-    link: "/vegetables/pepper",
-    name: "Перец",
-  },
-];
+// let staticVegies = [
+//   {
+//     img: tomato,
+//     link: "/vegetables/tomatos",
+//     name: "Помидоры",
+//   },
+//   {
+//     img: morc,
+//     link: "/vegetables/carrot",
+//     name: "Морковь",
+//   },
+//   {
+//     img: cabach,
+//     link: "/vegetables/zucchini",
+//     name: "Кабачки",
+//   },
+//   {
+//     img: capusta,
+//     link: "/vegetables/cabbage",
+//     name: "Капуста",
+//   },
+//   {
+//     img: pot,
+//     link: "/vegetables/potato",
+//     name: "Картофель",
+//   },
+//   {
+//     img: ogur,
+//     link: "/vegetables/cucumbers",
+//     name: "Огурцы",
+//   },
+//   {
+//     img: svekla,
+//     link: "/vegetables/beet",
+//     name: "Свекла",
+//   },
+//   {
+//     img: perec,
+//     link: "/vegetables/pepper",
+//     name: "Перец",
+//   },
+// ];
 
-const staticAllVegies = [...allVeggies];
 
 function Vegetables() {
+  const {categoryName} = useParams()
   const dispatch = useDispatch()
-  const {categoryId} = useParams()
   useEffect(() => {
-    dispatch(getCategoryDetail(categoryId))
-  })
-  const [vegies, setVegies] = useState(allVeggies);
+    console.log('in useEFF');
+    dispatch(getCategory(categoryName))
+  }, [dispatch, categoryName])
+  const {subcategories} = useSelector(store => store.productsReducer)
+  let staticAllVegies = [...subcategories]
+
+  console.log('TEST LOG', categoryName, );
+
+
+  
+  console.log('subcategories -->', subcategories);
+
+  
+  const [vegies, setVegies] = useState(staticAllVegies);
   const [goRight, setGoRight] = useState(false);
   const [goLeft, setGoLeft] = useState(false);
   const [staticVegies, setstaticVegies] = useState(staticAllVegies);
@@ -76,29 +87,29 @@ function Vegetables() {
     if (dir === "r") {
       setGoRight(true);
       setTimeout(() => {
-        allVeggies.unshift(allVeggies.pop());
-        setVegies(allVeggies);
+        staticAllVegies.unshift(staticAllVegies.pop());
+        setVegies(staticAllVegies);
         setGoRight(false);
       }, 380);
     } else {
       setGoLeft(true);
       setTimeout(() => {
-        allVeggies.push(allVeggies.shift());
-        setVegies(allVeggies);
+        staticAllVegies.push(staticAllVegies.shift());
+        setVegies(staticAllVegies);
         setGoLeft(false);
       }, 380);
     }
   };
 
-  return (
+  return  (
     <Flex>
       <Container>
         <ArrowLeft onClick={() => clickHandler("l")}></ArrowLeft>
         <ArrowRight onClick={() => clickHandler("r")}></ArrowRight>
-        <Card goR={goRight} goL={goLeft} veg={vegies} onClick={()=> navigate(allVeggies[Math.floor(allVeggies.length / 2)].link)}>
+        <Card goR={goRight} goL={goLeft} veg={vegies} onClick={()=> navigate(staticVegies[Math.floor(staticVegies.length / 2)].link)}>
           <ContentDiv go={goRight || goLeft}>
             <Content>
-              {allVeggies[Math.floor(allVeggies.length / 2)].name}
+             {(staticVegies && staticVegies[Math.floor(staticVegies.length / 2)].subCategoryName)}
             </Content>
           </ContentDiv>
         </Card>
@@ -120,10 +131,10 @@ function Vegetables() {
         </CardRight>
 
         <Menu>
-         {staticVegies.map((el) => {
+         {staticVegies?.map((el) => {
            return (
-             <Product onClick={()=> navigate(el.link)} selected={allVeggies[Math.floor(allVeggies.length / 2)].name === el.name}>
-               {el.name}
+             <Product onClick={()=> navigate(el.link)} selected={staticVegies && staticVegies[Math.floor(staticVegies.length / 2)].subCategoryName === el.subCategoryName}>
+               {el.subCategoryName}
              </Product>
            )
          })}
@@ -226,7 +237,7 @@ const Card = styled.div`
   top: 100px;
   box-shadow: 20px 20px 50px #585858;
   border-radius: 100%;
-  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2)].img});
+  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2)]?.subCategoryImg});
   background-position: center;
   background-size: 250%;
   color: white;
@@ -293,7 +304,7 @@ const CardLeft = styled.div`
   top: 200px;
   box-shadow: 20px 20px 50px #585858;
   border-radius: 100%;
-  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) - 1].img});
+  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) - 1]?.subCategoryImg});
   background-position: center;
   background-size: 250%;
   color: white;
@@ -349,7 +360,7 @@ const CardLeftNew = styled.div`
   top: 300px;
   box-shadow: 20px 20px 50px #585858;
   border-radius: 100%;
-  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) - 2].img});
+  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) - 2]?.subCategoryImg});
   background-position: center;
   background-size: 250%;
   color: white;
@@ -389,7 +400,7 @@ const CardRightNew = styled.div`
   top: 300px;
   box-shadow: 20px 20px 50px #585858;
   border-radius: 100%;
-  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) + 2].img});
+  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) + 2]?.subCategoryImg});
   background-position: center;
   background-size: 250%;
   color: white;
@@ -426,7 +437,7 @@ const CardRight = styled.div`
   top: 200px;
   box-shadow: 20px 20px 50px #585858;
   border-radius: 100%;
-  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) + 1].img});
+  background-image: url(${(props) => props.veg[Math.floor(props.veg.length / 2) + 1]?.subCategoryImg});
   background-position: center;
   background-size: 250%;
   color: white;

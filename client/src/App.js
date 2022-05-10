@@ -13,11 +13,11 @@ import AppRoutes from "./components/AppRoutes/index";
 const { Sider, Content, Footer } = Layout;
 
 function App() {
-  const location = useLocation();
+  // const location = useLocation();
 
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
+  // useEffect(() => {
+  //   console.log(location);
+  // }, [location]);
   const user = useSelector((store) => store.authReducer.user);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,42 +28,8 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Layout>
-        {location.pathname.includes("vendor") ? (
-          <Sider style={{ height: "100vh", backgroundColor: "white" }}>
-            <Image
-              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-              preview={false}
-            />
-            <SideMenu />
-          </Sider>
-        ) : (
-          <Nav>
-            <Logo
-              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-              to={"/"}
-            >
-              inMarket
-            </Logo>
-            <Container>
-              <Link to="/signin">Покупатель</Link>
-              <Link to="/vendor/signin">Продавец</Link>
-            </Container>
-          </Nav>
-        )}
-        <Layout>
-          {location.pathname.includes("vendor") ? (
-            <Content style={{ background: "white" }}>
-              <AppRoutes />
-            </Content>
-          ) : (
+     
             <Pages />
-          )}
-          <Footer style={{ textAlign: "center" }}>
-            inMarket FoodTech Startup 2022
-          </Footer>
-        </Layout>
-      </Layout>
     </div>
   );
 }
@@ -112,3 +78,39 @@ const Container = styled.div`
 `;
 
 export default App;
+
+ {/* <Layout>
+        {location.pathname.includes("vendor") ? (
+          <Sider style={{ height: "100vh", backgroundColor: "white" }}>
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
+              preview={false}
+            />
+            <SideMenu />
+          </Sider>
+        ) : (
+          <Nav>
+            <Logo
+              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
+              to={"/"}
+            >
+              inMarket
+            </Logo>
+            <Container>
+              <Link to="/signin">Покупатель</Link>
+              <Link to="/vendor/signin">Продавец</Link>
+            </Container>
+          </Nav>
+        )}
+        <Layout>
+          {location.pathname.includes("vendor") ? (
+            <Content style={{ background: "white" }}>
+              <AppRoutes />
+            </Content>
+          ) : (
+            )}
+          <Footer style={{ textAlign: "center" }}>
+            inMarket FoodTech Startup 2022
+          </Footer>
+        </Layout>
+      </Layout> */}

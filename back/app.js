@@ -19,6 +19,7 @@ require('./db/models/user');
 const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.router');
 const indexRouter = require('./routes');
+const productRouter = require('./routes/product.router');
 const errorMiddleware = require('./middlewares/error.middleware');
 const api = require('./api');
 
@@ -52,6 +53,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/categories', productRouter);
 
 app.use(passport.initialize());
 app.use(passport.session());
