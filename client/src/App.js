@@ -60,9 +60,6 @@ function App() {
           ) : (
             <Pages />
           )}
-          <Footer style={{ textAlign: "center" }}>
-            inMarket FoodTech Startup 2022
-          </Footer>
         </Layout>
        <Footer />
       </Layout>
