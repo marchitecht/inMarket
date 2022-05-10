@@ -8,7 +8,7 @@ function Berries() {
   const dispatch = useDispatch()
   const {category} = useParams()
   useEffect(() => {
-    dispatch(getCategory)
+    // dispatch(getCategory)
   })
   return (
     <>

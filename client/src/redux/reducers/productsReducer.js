@@ -12,10 +12,10 @@ const initialState = {
         return state;
     }
   };
-  export const getCategories =  (email, password) => async (dispatch) => {
+  export const getCategories =  () => async (dispatch) => {
       try {
         const categories = await axios.get(`${backUrl}`)
-        dispatch({type: 'GET_CATEGORIES', payload: categories})
+        dispatch({type: 'GET_CATEGORIES', payload: categories.data})
       } catch (error) {
         console.log(error.response?.data?.message)
       }

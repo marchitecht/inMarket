@@ -45,15 +45,14 @@ passport.serializeUser(async (user, cb) => {
   await tokenService.saveToken(userDto.id, tokens.refreshToken);
   const userData = {
     ...tokens,
-    ...userDto,
-
+    user: userDto,
   };
   console.log(userDto.id);
 
   console.log('serializing user', user);
-  cb(null, userDto);
+  cb(null, userData);
 });
-passport.deserializeUser(async ({ id }, cb) => {
+passport.deserializeUser(async ({ user: { id } }, cb) => {
   const userInDb = await User.findOne({ where: { id } })
     .catch((err) => {
       console.log('Error deserializing', err);
