@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import icon1 from "../img/footerIcons/vk.png";
-import icon2 from "../img/footerIcons/face.png";
-import icon3 from "../img/footerIcons/twit.png";
-import icon4 from "../img/footerIcons/inst.png";
+import icon1 from "../img/footerIcons/vk_w.png";
+import icon2 from "../img/footerIcons/face_w.png";
+import icon3 from "../img/footerIcons/twitter_w.png";
+import icon4 from "../img/footerIcons/inst_w.png";
 import { useNavigate } from "react-router-dom";
 
 const iconsArray = [{
@@ -36,6 +36,7 @@ const navigate = useNavigate()
            <Icons onClick={()=> navigate(el.link)} icon={el.img} name={el.name}></Icons>
          )
        })}
+     <Test onClick={()=> navigate('/test')}>Test</Test>
      </IconsContainer>
      <DataContainer>© {new Date().getFullYear()} Copyright Text</DataContainer>
     </FooterDiv>
@@ -45,7 +46,8 @@ const navigate = useNavigate()
 }
 
 const FooterDiv = styled.div`
-background-color: white;
+background: rgb(166,8,255);
+background: linear-gradient(90deg, rgba(166,8,255,1) 21%, rgba(223,57,244,1) 100%);
 position: fixed;
 bottom: 0;
 left: 0;
@@ -72,6 +74,8 @@ position: relative;
 
 `
 const DataContainer = styled.div`
+color: white;
+font-weight: bold;
 `
 const Icons = styled.div`
 position: relative;
@@ -94,13 +98,17 @@ cursor: pointer;
   line-height: 20px;
   text-align: center;
   border: 1px solid black;
- /*  padding-top: -30px; */
   margin-top: -30px;
   margin-left: -${props => props.name.length * 6}px;
   position: absolute;
   opacity: 0.9;
   border-radius: 5px;
 }
+`
+const Test = styled.div`
+  cursor: pointer;
+  height: 20px;
+  width: 30px;
 `
 
 export default Footer;
