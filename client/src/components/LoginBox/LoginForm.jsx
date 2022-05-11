@@ -7,6 +7,7 @@ import { login } from "../../redux/reducers/authReducer";
 import GoogleButton from 'react-google-button'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function LoginForm(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -37,8 +38,8 @@ function LoginForm(props) {
                 <GoogleButton onClick={redirectToGoogleSSO}/>
          
       </FormContainer>
-       < SubmitButton type='button' onClick={handleClick}>Войти</SubmitButton>
-        <MutedLink>Не можешь войти? <BoldLink href='#' onClick={switchToSignUp}>Присоединиться</BoldLink></MutedLink>
+       < SubmitButton type='button' onClick={() => dispatch(login(email, password))}>Войти</SubmitButton>
+        <MutedLink>Не можешь войти? <Link to='/auth/signup'>Присоединиться</Link></MutedLink>
         
     </BoxContainer>
   )

@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { useMemo, useState,useEffect } from "react";
 import { useDispatch, useSelector,useLocation, useNavigate } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getCategory } from "../redux/reducers/productsReducer";
+import { getCategory } from "../../redux/reducers/productsReducer";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css'
 

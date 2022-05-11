@@ -2,6 +2,8 @@ import React from 'react'
 import styled from "styled-components";
 import { Layout, Image } from "antd";
 import SideMenu from "./components/vendorDashboard/sideItems";
+import { Link } from 'react-router-dom';
+import AppRoutes from '../components/AppRoutes/index'
 function VendorDashboard() {
   const { Sider, Content, Footer } = Layout;
   return (

@@ -53,7 +53,7 @@ class UserService {
     return { ...tokens, user: userDto };
   }
 
-  async registration(email, password, firstName, lastName, dob, gender, role, avatar) {
+  async registration(email, password, firstName, lastName, dob, gender, role, avatarImageLink) {
     const candidate = await User.findOne({ where: { email } });
     if (candidate) {
       throw ApiError.BadRequest(`Пользователь с таким ${email} уже существует`);
@@ -73,7 +73,7 @@ class UserService {
         lastName,
         dob,
         gender,
-        avatar,
+        avatar: avatarImageLink,
         roleId: userRole.id,
       });
       await mailService.sendActivationMail(email, `${process.env.BACK_URL}/auth/activate/${activationLink}`);
