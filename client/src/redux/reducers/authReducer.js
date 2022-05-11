@@ -28,7 +28,7 @@ const initialState = {
         console.log(error.response?.data?.message)
       }
     }
-    export const registration =  (email, password, firstName, lastName, dob, gender, role, avatar) => async (dispatch) => {
+    export const registration =  ({email, password, firstName, lastName, dob, gender, role, avatar}) => async (dispatch) => {
       try {
         const response = await AuthService.registration(email, password, firstName, lastName, dob, gender, role, avatar)
         console.log(response);
