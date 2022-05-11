@@ -1,121 +1,129 @@
 import styled, { keyframes } from "styled-components";
-import an from "../img/categoryImg/fruts/an.jpg";
-import apple from "../img/categoryImg/fruts/apple.jpg";
-import bananas from "../img/categoryImg/fruts/bananas.jpg";
-import mango from "../img/categoryImg/fruts/mango.jpeg";
-import oranges from "../img/categoryImg/fruts/oranges.jpg";
-import pear from "../img/categoryImg/fruts/pear.jpg";
-import pers from "../img/categoryImg/fruts/pers.jpg";
-import kiwi from "../img/categoryImg/fruts/kiwi.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import cherry from '../../img/categoryImg/berry/cherry.jpg'
+import ez from '../../img/categoryImg/berry/ez.jpg'
+import gol from '../../img/categoryImg/berry/gol.jpg'
+import mal from '../../img/categoryImg/berry/mal.jpg'
+import smor from '../../img/categoryImg/berry/smor.jpg'
+import str from '../../img/categoryImg/berry/str.jpg'
+import kryzhovnik from '../../img/categoryImg/berry/kryzhovnik.jpg'
+import zemlyanika from '../../img/categoryImg/berry/zemlyanika.jpg'
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-let allFruits = [
+let allBerries = [
   {
-    img: an,
-    link: "/fruits/pineapple",
-    name: "Ананасы",
+    img: cherry,
+    link: "/berries/cherry",
+    name: "Вишня",
   },
   {
-    img: apple,
-    link: "/fruits/apple",
-    name: "Яблоки",
+    img: ez,
+    link: "/berries/blackberry",
+    name: "Ежевика",
   },
   {
-    img: bananas,
-    link: "/fruits/bananas",
-    name: "Бананы",
+    img: gol,
+    link: "/berries/blueberry",
+    name: "Голубика",
   },
   {
-    img: mango,
-    link: "/fruits/mango",
-    name: "Манго",
+    img: mal,
+    link: "/berries/raspberry",
+    name: "Малина",
   },
   {
-    img: oranges,
-    link: "/fruits/oranges",
-    name: "Апельсины",
+    img: smor,
+    link: "/berries/currant",
+    name: "Смородина",
   },
   {
-    img: pear,
-    link: "/fruits/pear",
-    name: "Груши",
+    img: str,
+    link: "/berries/strawberry",
+    name: "Клубника",
   },
   {
-    img: pers,
-    link: "/fruits/peaches",
-    name: "Персики",
+    img: kryzhovnik,
+    link: "/berries/gooseberry",
+    name: "Крыжовник",
   },
   {
-    img: kiwi,
-    link: "/fruits/kiwi",
-    name: "Киви",
+    img: zemlyanika,
+    link: "/berries/wildstrawberry",
+    name: "Земляника",
   },
 ];
 
-const staticAllFruits = [...allFruits];
+const staticAllBerries = [...allBerries];
 
-function Fruits() {
+function Berries() {
 
-  const [fruits, setFruits] = useState(allFruits);
+  const [berries, setBerries] = useState(allBerries);
   const [goRight, setGoRight] = useState(false);
   const [goLeft, setGoLeft] = useState(false);
-  const [staticFruits, setstaticVegies] = useState(staticAllFruits);
+  const [staticBerries, setstaticBerries] = useState(staticAllBerries);
   const navigate = useNavigate()
 
   const clickHandler = (dir) => {
     if (dir === "r") {
       setGoRight(true);
       setTimeout(() => {
-        allFruits.unshift(allFruits.pop());
-        setFruits(allFruits);
+        allBerries.unshift(allBerries.pop());
+        setBerries(allBerries);
         setGoRight(false);
       }, 380);
     } else {
       setGoLeft(true);
       setTimeout(() => {
-        allFruits.push(allFruits.shift());
-        setFruits(allFruits);
+        allBerries.push(allBerries.shift());
+        setBerries(allBerries);
         setGoLeft(false);
       }, 380);
     }
   };
 
+  const dispatch = useDispatch()
+  const {category} = useParams()
+  useEffect(() => {
+    // dispatch(getCategory)
+  })
   return (
     <>
       <Flex>
       <Container>
         <ArrowLeft onClick={() => clickHandler("l")}></ArrowLeft>
         <ArrowRight onClick={() => clickHandler("r")}></ArrowRight>
-        <Card goR={goRight} goL={goLeft} veg={fruits} onClick={()=> navigate(allFruits[Math.floor(allFruits.length / 2)].link)}>
+        <Card goR={goRight} goL={goLeft} veg={berries} onClick={()=> navigate(allBerries[Math.floor(allBerries.length / 2)].link)}>
           <ContentDiv go={goRight || goLeft}>
             <Content>
-              {allFruits[Math.floor(allFruits.length / 2)].name}
+              {allBerries[Math.floor(allBerries.length / 2)].name}
             </Content>
           </ContentDiv>
         </Card>
 
-        <CardLeftNew goR={goRight} veg={fruits}>
+        <CardLeftNew goR={goRight} veg={berries}>
           <Content></Content>
         </CardLeftNew>
 
-        <CardRightNew goL={goLeft} veg={fruits}>
+        <CardRightNew goL={goLeft} veg={berries}>
           <Content></Content>
         </CardRightNew>
 
-        <CardLeft goR={goRight} goL={goLeft} veg={fruits}>
+        <CardLeft goR={goRight} goL={goLeft} veg={berries}>
           <Content></Content>
         </CardLeft>
 
-        <CardRight goL={goLeft} goR={goRight} veg={fruits}>
+        <CardRight goL={goLeft} goR={goRight} veg={berries}>
           <Content></Content>
         </CardRight>
 
         <Menu>
-         {staticAllFruits.map((el) => {
+         {staticBerries.map((el) => {
            return (
-             <Product onClick={()=> navigate(el.link)} selected={allFruits[Math.floor(allFruits.length / 2)].name === el.name}>
+             <Product onClick={()=> navigate(el.link)} selected={allBerries[Math.floor(allBerries.length / 2)].name === el.name}>
                {el.name}
              </Product>
            )
@@ -126,7 +134,7 @@ function Fruits() {
     </>
   );
 }
-export default Fruits;
+export default Berries;
 
 const Flex = styled.div`
   display: flex;

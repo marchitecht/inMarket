@@ -1,88 +1,86 @@
 import styled, { keyframes } from "styled-components";
-import borodino from "../img/categoryImg/bread/borodino.jpg";
-import czelnozernovoj from "../img/categoryImg/bread/czelnozernovoj.jpg";
-import pshenichniy from "../img/categoryImg/bread/pshenichniy.jpg";
-import rjanoy from "../img/categoryImg/bread/rjanoy.jpg";
-import chiabatta from "../img/categoryImg/bread/chiabatta.jpg";
-import kruas from "../img/categoryImg/bread/kruas.jpg";
-import kukur from "../img/categoryImg/bread/kukur.jpg";
-import pita from "../img/categoryImg/bread/pita.jpg";
-import purpleArrow from "../img/footerIcons/purple_arrow.png";
+import an from "../../img/categoryImg/fruts/an.jpg";
+import apple from "../../img/categoryImg/fruts/apple.jpg";
+import bananas from "../../img/categoryImg/fruts/bananas.jpg";
+import mango from "../../img/categoryImg/fruts/mango.jpeg";
+import oranges from "../../img/categoryImg/fruts/oranges.jpg";
+import pear from "../../img/categoryImg/fruts/pear.jpg";
+import pers from "../../img/categoryImg/fruts/pers.jpg";
+import kiwi from "../../img/categoryImg/fruts/kiwi.jpg";
+import purpleArrow from "../../img/footerIcons/purple_arrow.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-let allBread = [
+let allFruits = [
   {
-    img: borodino,
-    link: "/bread/borodinobread",
-    name: "Бородинский хлеб",
+    img: an,
+    link: "/fruits/pineapple",
+    name: "Ананасы",
   },
   {
-    img: czelnozernovoj,
-    link: "/bread/wholegrainbread",
-    name: "Цельнозерновой хлеб",
+    img: apple,
+    link: "/fruits/apple",
+    name: "Яблоки",
   },
   {
-    img: pshenichniy,
-    link: "/bread/wheatbread",
-    name: "Пшеничный хлеб",
+    img: bananas,
+    link: "/fruits/bananas",
+    name: "Бананы",
   },
   {
-    img: rjanoy,
-    link: "/bread/ryebread",
-    name: "Ржаной хлеб",
+    img: mango,
+    link: "/fruits/mango",
+    name: "Манго",
   },
   {
-    img: chiabatta,
-    link: "/bread/chiabatta",
-    name: "Чиабатта",
+    img: oranges,
+    link: "/fruits/oranges",
+    name: "Апельсины",
   },
   {
-    img: kruas,
-    link: "/bread/croissants",
-    name: "Круассаны",
+    img: pear,
+    link: "/fruits/pear",
+    name: "Груши",
   },
   {
-    img: kukur,
-    link: "/bread/cornbread",
-    name: "Кукурузный хлеб",
+    img: pers,
+    link: "/fruits/peaches",
+    name: "Персики",
   },
   {
-    img: pita,
-    link: "/bread/pita",
-    name: "Пита",
+    img: kiwi,
+    link: "/fruits/kiwi",
+    name: "Киви",
   },
 ];
 
-const staticAllBread = [...allBread];
+const staticAllFruits = [...allFruits];
 
-function Bread() {
+function Fruits() {
 
-  const [bread, setBread] = useState(allBread);
+  const [fruits, setFruits] = useState(allFruits);
   const [goRight, setGoRight] = useState(false);
   const [goLeft, setGoLeft] = useState(false);
-  const [staticBread, setstaticBread] = useState(staticAllBread);
+  const [staticFruits, setstaticVegies] = useState(staticAllFruits);
   const navigate = useNavigate()
 
   const clickHandler = (dir) => {
     if (dir === "r") {
       setGoRight(true);
       setTimeout(() => {
-        allBread.unshift(allBread.pop());
-        setBread(allBread);
+        allFruits.unshift(allFruits.pop());
+        setFruits(allFruits);
         setGoRight(false);
       }, 380);
     } else {
       setGoLeft(true);
       setTimeout(() => {
-        allBread.push(allBread.shift());
-        setBread(allBread);
+        allFruits.push(allFruits.shift());
+        setFruits(allFruits);
         setGoLeft(false);
       }, 380);
     }
   };
-
-
 
   return (
     <>
@@ -90,34 +88,34 @@ function Bread() {
       <Container>
         <ArrowLeft onClick={() => clickHandler("l")}></ArrowLeft>
         <ArrowRight onClick={() => clickHandler("r")}></ArrowRight>
-        <Card goR={goRight} goL={goLeft} veg={bread} onClick={()=> navigate(allBread[Math.floor(allBread.length / 2)].link)}>
+        <Card goR={goRight} goL={goLeft} veg={fruits} onClick={()=> navigate(allFruits[Math.floor(allFruits.length / 2)].link)}>
           <ContentDiv go={goRight || goLeft}>
             <Content>
-              {allBread[Math.floor(allBread.length / 2)].name}
+              {allFruits[Math.floor(allFruits.length / 2)].name}
             </Content>
           </ContentDiv>
         </Card>
 
-        <CardLeftNew goR={goRight} veg={bread}>
+        <CardLeftNew goR={goRight} veg={fruits}>
           <Content></Content>
         </CardLeftNew>
 
-        <CardRightNew goL={goLeft} veg={bread}>
+        <CardRightNew goL={goLeft} veg={fruits}>
           <Content></Content>
         </CardRightNew>
 
-        <CardLeft goR={goRight} goL={goLeft} veg={bread}>
+        <CardLeft goR={goRight} goL={goLeft} veg={fruits}>
           <Content></Content>
         </CardLeft>
 
-        <CardRight goL={goLeft} goR={goRight} veg={bread}>
+        <CardRight goL={goLeft} goR={goRight} veg={fruits}>
           <Content></Content>
         </CardRight>
 
         <Menu>
-         {staticAllBread.map((el) => {
+         {staticAllFruits.map((el) => {
            return (
-             <Product onClick={()=> navigate(el.link)} selected={allBread[Math.floor(allBread.length / 2)].name === el.name}>
+             <Product onClick={()=> navigate(el.link)} selected={allFruits[Math.floor(allFruits.length / 2)].name === el.name}>
                {el.name}
              </Product>
            )
@@ -128,7 +126,7 @@ function Bread() {
     </>
   );
 }
-export default Bread;
+export default Fruits;
 
 const Flex = styled.div`
   display: flex;
@@ -457,9 +455,9 @@ const ArrowRight = styled.div`
   cursor: pointer;
 `;
 const Menu = styled.div`
-  font-size: 25px;
+  font-size: 30px;
   position: absolute;
-  gap: 70px;
+  gap: 30px;
   left: 520px;
   left: 220px;
   width: 1070px;
@@ -478,5 +476,4 @@ const Product = styled.div`
   cursor: pointer;
   font-family: 'Overpass', sans-serif;
   color: ${props => props.selected ? '#9932cc' : 'black'};
-  text-align: center;
 `;
