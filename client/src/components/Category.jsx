@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import {useNavigate} from 'react-router-dom';
 import tomato1 from '../img/tomato.png';
@@ -6,15 +7,16 @@ import berries from '../img/berries.png';
 import bread from '../img/bread.png';
 import pear from '../img/pear.png';
 import Background from './Background';
+import { getCategories } from '../redux/reducers/productsReducer';
 
 
-const categories = [{
+const categoriees = [{
   img: tomato1,
   color1: '#f0a792',
   color2: '#bc6b53',
   color3: '#e96841',
   color4: '#5e2020',
-  link: '/vegetables',
+  link: '/categories/vegetables',
   name: 'Овощи',
 },{
   img: berries,
@@ -22,7 +24,7 @@ const categories = [{
   color2: '#5355bc',
   color3: '#5241e9',
   color4: '#21205e',
-  link: '/berries',
+  link: '/categories/berries',
   name: 'Ягоды',
 },{
   img: bread,
@@ -30,7 +32,7 @@ const categories = [{
   color2: '#bca953',
   color3: '#e9bc41',
   color4: '#5e5320',
-  link: '/bread',
+  link: '/categories/bread',
   name: 'Хлеб',
 },{
   img: pear,
@@ -38,17 +40,23 @@ const categories = [{
   color2: '#a0bc53',
   color3: '#b7e941',
   color4: '#465e20',
-  link: '/fruits',
+  link: '/categories/fruits',
   name: 'Фрукты',
 },]
 
 function Category() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const categories = useSelector(store => store.productsReducer.categories)
+  console.log('check --->', categories);
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [])
+  const navigate = useNavigate()
   return (
 <>
 <Background/>
 <Container>
-{categories.map((el) => {
+{categoriees.map((el) => {
   return (
   <>
   <Vegetables onClick={()=> navigate(el.link)} colors={[el.color1, el.color2, el.color3]}> 

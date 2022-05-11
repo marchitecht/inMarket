@@ -1,5 +1,6 @@
 const passport = require('passport');
 const DtoUser = require('../dtos/user-dto');
+const userController = require('../controllers/user-controller');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { User } = require('../db/models');
 const UserDto = require('../dtos/user-dto');
@@ -44,22 +45,28 @@ passport.use(
 passport.serializeUser(async (user, cb) => {
   console.log('user-->', user.dataValues);
   const userDto = await new UserDto({ ...user.dataValues });
-  console.log(userDto.id);
   const tokens = await tokenService.generateTokens({ ...userDto });
   await tokenService.saveToken(userDto.id, tokens.refreshToken);
   const userData = {
     ...tokens,
-    ...userDto,
+    user: userDto,
   };
+  console.log(userDto.id);
+
   console.log('serializing user', user);
   cb(null, userData);
 });
-passport.deserializeUser(async ({ id }, cb) => {
+passport.deserializeUser(async ({ user: { id } }, cb) => {
   const userInDb = await User.findOne({ where: { id } })
     .catch((err) => {
       console.log('Error deserializing', err);
       cb(err, null);
     });
-  if (userInDb)cb(null, userInDb);
-  console.log('Deserialized user', userInDb);
+  if (userInDb) {
+    await userController.refresh();
+    const userDto = await new UserDto({ ...userInDb.dataValues });
+
+    console.log('Deserialized user', userData);
+    cb(null, userData);
+  }
 });
