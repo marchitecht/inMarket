@@ -7,6 +7,7 @@ import Fruits from "../components/SubCategories/Fruits";
 import Bread from "../components/SubCategories/Bread";
 import Berries from "../components/SubCategories/Berries";
 import TestPage from "../components/ProductsExemple/Test";
+import Appp from "../components/Chat/Appp";
 
  function Pages() {
   const location = useLocation();
@@ -20,6 +21,7 @@ import TestPage from "../components/ProductsExemple/Test";
       <Route path="/bread" element={<Bread />} />
       <Route path="/berries" element={<Berries />} />
       <Route path="/test" element={<TestPage />} />
+      <Route path="/chat" element={<Appp />} />
     </Routes>
   )
 }

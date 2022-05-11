@@ -11,10 +11,13 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const upload = require('./middlewares/upload.middleware');
+const http = require("http"); //=======
 require('./auth/passport');
 require('./auth/passportGoogleSSO');
 
 require('./db/models/user');
+
+const { Server } = require("socket.io"); //========
 
 const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.router');
@@ -30,6 +33,9 @@ app.use(cors(
     origin: process.env.CLIENT_URL,
   },
 ));
+
+// const server = http.createServer(app); //=========
+
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
@@ -53,12 +59,12 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
-async function roleCreate() {
-  await Role.create({ type: 'Покупатель' });
-  await Role.create({ type: 'Продавец' });
-  await Role.create({ type: 'Курьер' });
-  await Role.create({ type: 'Администратор' });
-}
+// async function roleCreate() {
+//   await Role.create({ type: 'Покупатель' });
+//   await Role.create({ type: 'Продавец' });
+//   await Role.create({ type: 'Курьер' });
+//   await Role.create({ type: 'Администратор' });
+// }
 
 // roleCreate();
 
@@ -67,5 +73,31 @@ app.use(passport.session());
 
 app.use('/api/v1', api);
 app.use(errorMiddleware);
+
+// Chat 
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+// io.on("connection", (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
+
+//   socket.on("join_room", (data) => {
+//     socket.join(data);
+//     console.log(`User with ID: ${socket.id} joined room: ${data}`);
+//   });
+
+//   socket.on("send_message", (data) => {
+//     socket.to(data.room).emit("receive_message", data);
+//   });
+
+//   socket.on("disconnect", () => {
+//     console.log("User Disconnected", socket.id);
+//   });
+// });
 
 module.exports = app;
