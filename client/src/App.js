@@ -23,41 +23,8 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Layout>
-        {location.pathname.includes("vendor") ? (
-          <Sider style={{ height: "100vh", backgroundColor: "white" }}>
-            <Image
-              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-              preview={false}
-            />
-            <SideMenu />
-          </Sider>
-        ) : (
-          <Nav>
-            <Logo
-              src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-              to={"/"}
-            >
-              inMarket
-            </Logo>
-            <Search/>
-            <Container>
-              <Link to="/signin">Покупатель</Link>
-              <Link to="/vendor/signin">Продавец</Link>
-            </Container>
-          </Nav>
-        )}
-        <Layout>
-          {location.pathname.includes("vendor") ? (
-            <Content style={{ background: "white" }}>
-              <AppRoutes />
-            </Content>
-          ) : (
+
             <Pages />
-          )}
-        </Layout>
-       <Footer />
-      </Layout>
     </div>
   );
 }
