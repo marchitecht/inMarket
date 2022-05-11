@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import { motion } from "framer-motion";
 import { AccountContext } from "./accountsContext";
 import SignupForm from "./SignupForm";
+import { useLocation } from "react-router-dom";
 
 const backDropVariants = {
   expanded: {
@@ -50,7 +51,12 @@ function LoginBox(props) {
   };
 
   const contextValue = { switchToSignUp, switchToSignIn };
-
+  const location = useLocation()
+  console.log(location);
+  const isSignup = location.pathname.includes('signup')
+  useEffect(()=>{
+    if(isSignup) switchToSignUp()
+  }, [location])
   return (
     <AccountContext.Provider value={contextValue}>
       <BoxContainer>

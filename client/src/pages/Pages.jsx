@@ -12,22 +12,21 @@ function Pages() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Category />} >
-          <Route path="/categories" element={<Category />}>
-          
-          </Route>
+          <Route path="/categories" element={<Category />}/>
         </Route>
+        <Route path="/auth/signin" element={<LoginBox />} />
+        <Route path="/auth/signup" element={<LoginBox />} />
         <Route path="/categories/:categoryName" element={<Vegetables />}></Route>
         <Route path="/categories/:categoryName/:subCategoryId" element={<Vegetables />}></Route>
-
-        {/* <Route path="/signin" element={<LoginBox />} />
-      <Route path="/vegetables" element={<Vegetables />} />
-      <Route path="/fruits" element={<Fruits />} />
-      <Route path="/bread" element={<Bread />} />
-      <Route path="/berries" element={<Berries />} /> */}
-        {/* <Route path="/test" element={<ProductsExemple />} /> */}
       </Routes>
     </BrowserRouter>
 
   )
 }
 export default Pages
+ {/* 
+      <Route path="/vegetables" element={<Vegetables />} />
+      <Route path="/fruits" element={<Fruits />} />
+      <Route path="/bread" element={<Bread />} />
+      <Route path="/berries" element={<Berries />} /> */}
+        {/* <Route path="/test" element={<ProductsExemple />} /> */}
