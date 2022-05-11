@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/reducers/authReducer";
 import AppRoutes from "./components/AppRoutes/index";
+import Footer from "./components/Footer";
 
 
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className="App">
        <Pages />
+       <Footer/>  
     </div>
   );
 }
