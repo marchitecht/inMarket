@@ -17,7 +17,9 @@ function Pages() {
           </Route>
         </Route>
         <Route path="/categories/:categoryName" element={<Vegetables />}></Route>
-        <Route path="/categories/:categoryName/:subCategoryId" element={<Vegetables />}></Route>
+        <Route path="/categories/:categoryName/:subCategoryId" element={<Vegetables />}>
+          
+        </Route>
 
         {/* <Route path="/signin" element={<LoginBox />} />
       <Route path="/vegetables" element={<Vegetables />} />
