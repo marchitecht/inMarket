@@ -11,10 +11,10 @@ import AppRoutes from "./components/AppRoutes/index";
 
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"))
   // const user = useSelector((store) => store.authReducer.user);
   const dispatch = useDispatch();
   useEffect(() => {
+    const token = localStorage.getItem("token")
     if (token) {
       dispatch(checkAuth());
     }
