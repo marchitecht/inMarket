@@ -2,10 +2,11 @@ import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Category from "../components/Category";
 import LoginBox from "../components/LoginBox/LoginBox";
-import Vegetables from "../components/Vegetables";
-import Fruits from "../components/Fruits";
-import Bread from "../components/Bread";
-import Berries from "../components/Berries";
+import Vegetables from "../components/SubCategories/Vegetables";
+import Fruits from "../components/SubCategories/Fruits";
+import Bread from "../components/SubCategories/Bread";
+import Berries from "../components/SubCategories/Berries";
+import TestPage from "../components/ProductsExemple/Test";
 
 function Pages() {
   return (
