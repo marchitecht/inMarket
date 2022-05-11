@@ -1,5 +1,7 @@
 require('dotenv').config();
-const { Role } = require('./db/models');
+// const { Server } = require('socket.io'); //========
+const http = require('http'); //=======
+const cookieSession = require('cookie-session');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -11,28 +13,26 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const upload = require('./middlewares/upload.middleware');
-const http = require("http"); //=======
 require('./auth/passport');
 require('./auth/passportGoogleSSO');
 
 require('./db/models/user');
+const { Role } = require('./db/models');
 
-const { Server } = require("socket.io"); //========
-
-const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.router');
 const indexRouter = require('./routes');
+const productRouter = require('./routes/product.router');
 const errorMiddleware = require('./middlewares/error.middleware');
 const api = require('./api');
 
 const app = express();
 
-app.use(cors(
-  {
+app.use(
+  cors({
     credentials: true,
     origin: process.env.CLIENT_URL,
-  },
-));
+  })
+);
 
 // const server = http.createServer(app); //=========
 
@@ -43,30 +43,26 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [process.env.COOKIE_KEY],
-}));
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIE_KEY],
+  })
+);
 
-app.use(session({
-  name: 'sid',
-  store: new FileStore(),
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false,
-}));
+app.use(
+  session({
+    name: 'sid',
+    store: new FileStore(),
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-
-// async function roleCreate() {
-//   await Role.create({ type: 'Покупатель' });
-//   await Role.create({ type: 'Продавец' });
-//   await Role.create({ type: 'Курьер' });
-//   await Role.create({ type: 'Администратор' });
-// }
-
-// roleCreate();
+app.use('/categories', productRouter);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -74,7 +70,7 @@ app.use(passport.session());
 app.use('/api/v1', api);
 app.use(errorMiddleware);
 
-// Chat 
+// Chat
 
 // const io = new Server(server, {
 //   cors: {

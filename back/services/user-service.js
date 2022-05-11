@@ -12,22 +12,19 @@ class UserService {
       console.log('NO REFRESH TOKEN');
       throw ApiError.unauthorizedError();
     }
-    const tokenFromDb = await tokenService.findToken(refreshToken);
     const userData = await tokenService.validateRefreshToken(refreshToken);
-    console.log('userDATA --> ', userData);
-    console.log('TokenFromDB --> ', tokenFromDb);
+    const tokenFromDb = await tokenService.findToken(refreshToken, userData.id);
+    // console.log('userDATA --> ', userData);
+    // console.log('TokenFromDB --> ', tokenFromDb);
     if (!tokenFromDb || !userData) {
       console.log('NO NEEDED THINGS');
       throw ApiError.unauthorizedError();
     }
     const user = await User.findByPk(userData.id);
     const userDto = new UserDto(user);
-    const tokens = tokenService.generateTokens({ ...userDto });
+    const tokens = await tokenService.generateTokens({ ...userDto });
     tokenService.saveToken(userDto.id, tokens.refreshToken);
-    return {
-      ...tokens,
-      user: userDto,
-    };
+    return { ...tokens, user: userDto };
   }
 
   async logout(refreshToken) {
@@ -48,13 +45,12 @@ class UserService {
     if (!isPasswordCorrect) {
       throw ApiError.BadRequest('Пароль введен неверно. Проверьте правильность введенных данных.');
     }
+
     const userDto = new UserDto(candidate);
-    const tokens = tokenService.generateTokens({ ...userDto });
-    tokenService.saveToken(userDto.id, tokens.refreshToken);
-    return {
-      ...tokens,
-      user: { ...userDto },
-    };
+    const tokens = await tokenService.generateTokens({ ...userDto });
+    await tokenService.saveToken(userDto.id, tokens.refreshToken);
+    await candidate.update({ isOnline: true });
+    return { ...tokens, user: userDto };
   }
 
   async registration(email, password, firstName, lastName, dob, gender, role, avatar) {
@@ -82,12 +78,9 @@ class UserService {
       });
       await mailService.sendActivationMail(email, `${process.env.BACK_URL}/auth/activate/${activationLink}`);
       const userDto = new UserDto(newUser);
-      const tokens = tokenService.generateTokens({ ...userDto });
-      tokenService.saveToken(userDto.id, tokens.refreshToken);
-      return {
-        ...tokens,
-        user: { ...userDto },
-      };
+      const tokens = await tokenService.generateTokens({ ...userDto });
+      await tokenService.saveToken(userDto.id, tokens.refreshToken);
+      return { ...tokens, user: userDto };
     }
   }
 

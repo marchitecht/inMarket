@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Category from "../components/Category";
 import LoginBox from "../components/LoginBox/LoginBox";
 import Vegetables from "../components/SubCategories/Vegetables";
@@ -9,13 +9,19 @@ import Berries from "../components/SubCategories/Berries";
 import TestPage from "../components/ProductsExemple/Test";
 import Appp from "../components/Chat/Appp";
 
- function Pages() {
-  const location = useLocation();
-
+function Pages() {
   return (
-    <Routes location={location} key={location.pathname}>
-      <Route path="/" element={<Category />} />
-      <Route path="/signin" element={<LoginBox />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Category />} >
+          <Route path="/categories" element={<Category />}>
+          
+          </Route>
+        </Route>
+        <Route path="/categories/:categoryName" element={<Vegetables />}></Route>
+        <Route path="/categories/:categoryName/:subCategoryId" element={<Vegetables />}></Route>
+
+        {/* <Route path="/signin" element={<LoginBox />} />
       <Route path="/vegetables" element={<Vegetables />} />
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
@@ -23,6 +29,11 @@ import Appp from "../components/Chat/Appp";
       <Route path="/test" element={<TestPage />} />
       <Route path="/chat" element={<Appp />} />
     </Routes>
+      <Route path="/berries" element={<Berries />} /> */}
+        {/* <Route path="/test" element={<ProductsExemple />} /> */}
+      </Routes>
+    </BrowserRouter>
+
   )
 }
 export default Pages
