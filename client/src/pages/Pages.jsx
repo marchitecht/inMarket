@@ -9,39 +9,42 @@ import Menu from "../components/vendorDashboard/modules/VendorMenu/index";
 import CreateMenuItem from "../components/vendorDashboard/modules/CreateMenuItem/index";
 import OrderHistory from "../components/vendorDashboard/modules/OrderHistory/index";
 import Settings from '../components/vendorDashboard/modules/Settings/index';
+import TestPage from "../components/ProductsExemple/Test.jsx";
 import VendorDashboard from "../components/VendorDashboard";
 import Header from "../components/Header";
+import VendorPages from './VendorPages'
 
 function Pages() {
   return (
     <BrowserRouter>
-    <Header/>
+      <Header />
       <Routes>
         {/* <React.Fragment><Header></Header></React.Fragment> */}
-        <Route path="/" element={<Category />} >
-          <Route path="/categories" element={<Category />}/>
+        <Route path="/"  >
+          <Route index element={<Category></Category>}></Route>
+          <Route path="/categories" element={<Category />}>
+          <Route index element={<Category></Category>}></Route>
+            <Route path="categories/:categoryName" element={<Vegetables />}>
+              <Route path=":subCategoryId" element={<Vegetables />}> </Route>
+            </Route>
+
+          </Route>
         </Route>
         <Route path="/auth/signin" element={<LoginBox />} />
         <Route path="/auth/signup" element={<LoginBox />} />
-        <Route path="/categories/:categoryName" element={<Vegetables />}></Route>
-        <Route path="/categories/:categoryName/:subCategoryId" element={<Vegetables />}>
-          
-        </Route>
-        <Route path="/vendor" element={<VendorDashboard/>}>   
-            
-        </Route>
-        <Route path="/vendor/orders" element={<Orders />} />
-          <Route path="/vendor/orders/:id" element={<DetailedOrder />} />
-          <Route path="/vendor/menu" element={<Menu />} />
-          <Route path="/vendor/menu/new" element={<CreateMenuItem />} />
-          <Route path="/vendor/history" element={<OrderHistory />} />
-          <Route path="/vendor/settings" element={<Settings />} />
 
+        <Route path="/categories/:categoryName/:subCategoryId/products" element={<TestPage></TestPage>}></Route>
+        <Route path="/vendor" element={<VendorDashboard/>}/>
+          
+
+
+
+  
         {/* <Route path="/signin" element={<LoginBox />} />
       <Route path="/vegetables" element={<Vegetables />} />
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
-      <Route path="/berries" element={<Berries />} /> */}
+    <Route path="/berries" element={<Berries />} /> */}
         {/* <Route path="/test" element={<ProductsExemple />} /> */}
       </Routes>
     </BrowserRouter>
@@ -49,9 +52,9 @@ function Pages() {
   )
 }
 export default Pages
- {/* 
+{/* 
       <Route path="/vegetables" element={<Vegetables />} />
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
       <Route path="/berries" element={<Berries />} /> */}
-        {/* <Route path="/test" element={<ProductsExemple />} /> */}
+{/* <Route path="/test" element={<ProductsExemple />} /> */ }
