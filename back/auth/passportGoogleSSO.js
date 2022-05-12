@@ -26,47 +26,33 @@ passport.use(
         isActivated: true,
       };
 
-      const user = await User.findOrCreate({
-        where: { googleId: profile.id },
-        defaults: { ...defaultUser },
-      })
-        .catch((err) => {
-          console.log('Problem signing in', err);
-          cb(err, null);
-        });
-      const dtoUser = new DtoUser(defaultUser);
-      console.log(dtoUser);
-      console.log(user);
-      if (user && user[0]) return cb(null, user && user[0]);
+      // const user = await User.findOrCreate({
+      //   where: { googleId: profile.id },
+      //   defaults: { ...defaultUser },
+      // })
+      //   .catch((err) => {
+      //     console.log('Problem signing in', err);
+      //     cb(err, null);
+      //   });
+      // const dtoUser = new DtoUser(defaultUser);
+      // console.log(dtoUser);
+      // console.log(user);
+      // if (user && user[0]) return cb(null, user && user[0]);
     },
   ),
 );
 
-passport.serializeUser(async (user, cb) => {
-  console.log('user-->', user.dataValues);
-  const userDto = await new UserDto({ ...user.dataValues });
-  const tokens = await tokenService.generateTokens({ ...userDto });
-  await tokenService.saveToken(userDto.id, tokens.refreshToken);
-  const userData = {
-    ...tokens,
-    user: userDto,
-  };
-  console.log(userDto.id);
-
+passport.serializeUser((user, cb) => {
   console.log('serializing user', user);
-  cb(null, userData);
+  // cb(null, user.id);
 });
-passport.deserializeUser(async ({ user: { id } }, cb) => {
-  const userInDb = await User.findOne({ where: { id } })
-    .catch((err) => {
-      console.log('Error deserializing', err);
-      cb(err, null);
-    });
-  if (userInDb) {
-    await userController.refresh();
-    const userDto = await new UserDto({ ...userInDb.dataValues });
+passport.deserializeUser(async (id, cb) => {
+  // const user = await User.findOne({ where: { id } })
+  //   .catch((err) => {
+  //     console.log('Error deserializing', err);
+  //     cb(err, null);
+  //   });
+  console.log('Deserialized user', user);
+  // if (user)cb(null, user);
+});
 
-    console.log('Deserialized user', userData);
-    cb(null, userData);
-  }
-});

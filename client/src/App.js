@@ -8,6 +8,8 @@ import { checkAuth } from "./redux/reducers/authReducer";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import AppRoutes from "./components/AppRoutes";
+import Header from "./components/Header";
+
 
 
 function App() {
@@ -22,8 +24,9 @@ function App() {
   }, [token, dispatch]);
   return (
     <div className="App">
-
-            <Pages />
+            <Pages/>
+            
+            <Footer/>
     </div>
   );
 }

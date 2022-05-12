@@ -46,12 +46,14 @@ const categoriees = [{
 
 function Category() {
   const dispatch = useDispatch()
+  const {user} = useSelector(store => store.authReducer)
   const categories = useSelector(store => store.productsReducer.categories)
   console.log('check --->', categories);
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getCategories())
-  }, [])
-  const navigate = useNavigate()
+    if (user?.roleId === 2) navigate('/vendor')
+  }, [user])
   return (
 <>
 <Background/>

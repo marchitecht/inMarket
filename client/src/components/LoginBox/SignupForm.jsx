@@ -22,7 +22,8 @@ function SignupForm(props) {
 
   const handleSubmit = () =>{
     dispatch(registration({email, password, firstName, lastName, role}))
-    navigate('/')
+    if (role === 'Продавец') navigate('/vendor')
+    else navigate('/')
   }
   return (
     <BoxContainer>

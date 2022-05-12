@@ -1,7 +1,7 @@
 import orders from '../../assets/orders.json';
 import {Card, Table, Tag} from 'antd';
 import "../../main.css";
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Orders = () =>{
   const navigate = useNavigate();
@@ -42,6 +42,7 @@ const Orders = () =>{
   ]
 
   return (
+    <>
     <Card title={'Заказы'} style={{margin: 20}}>
       <Table
       dataSource={orders}
@@ -51,7 +52,8 @@ const Orders = () =>{
         onClick: () => navigate(`/vendor/orders/${orderItem.orderID}`)
       })}
       />
-    </Card>
+      </Card>
+    </>
   )
 }
 export default Orders

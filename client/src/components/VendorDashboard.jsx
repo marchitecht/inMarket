@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 import { Layout, Image } from "antd";
-import SideMenu from "./components/vendorDashboard/sideItems";
+import SideMenu from "./vendorDashboard/sideItems";
 import { Link } from 'react-router-dom';
-import AppRoutes from '../components/AppRoutes/index'
 function VendorDashboard() {
   const { Sider, Content, Footer } = Layout;
   return (
@@ -16,29 +15,11 @@ function VendorDashboard() {
         />
         <SideMenu />
       </Sider>
-
-      <Nav>
-        <Logo
-          src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-          to={"/"}
-        >
-          inMarket
-        </Logo>
-        <Container>
-          <Link to="/signin">Покупатель</Link>
-          <Link to="/vendor/signin">Продавец</Link>
-        </Container>
-      </Nav>
-
     <Layout>
 
         <Content style={{ background: "white" }}>
-          <AppRoutes />
         </Content>
 
-      <Footer style={{ textAlign: "center" }}>
-        inMarket FoodTech Startup 2022
-      </Footer>
     </Layout>
   </Layout> 
 
@@ -71,7 +52,7 @@ const Nav = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 90px;
+  height: 7vh;
   z-index: 10;
   opacity: 0.8;
   transition: opacity 0.3s;

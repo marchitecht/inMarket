@@ -6,12 +6,17 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/authReducer";
 import GoogleButton from 'react-google-button'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function LoginForm(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const {switchToSignUp} = useContext(AccountContext)
+  const navigate = useNavigate()
+  const handleClick = () => {
+    dispatch(login(email, password))
+    navigate('/')
+  }
 
   const redirectToGoogleSSO = async () => {
     const googleLoginURL = 'http://localhost:5000/api/v1/login/google'
@@ -33,7 +38,7 @@ function LoginForm(props) {
                 <GoogleButton onClick={redirectToGoogleSSO}/>
          
       </FormContainer>
-       < SubmitButton type='button' onClick={() => dispatch(login(email, password))}>Войти</SubmitButton>
+       < SubmitButton type='button' onClick={handleClick}>Войти</SubmitButton>
         <MutedLink>Не можешь войти? <Link to='/auth/signup'>Присоединиться</Link></MutedLink>
         
     </BoxContainer>
