@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 import { Layout, Image } from "antd";
 import SideMenu from "./components/vendorDashboard/sideItems";
-import { Link } from 'react-router-dom';
-import AppRoutes from '../components/AppRoutes/index'
+import { Link } from "react-router-dom";
+import AppRoutes from "../components/AppRoutes/index";
 function VendorDashboard() {
   const { Sider, Content, Footer } = Layout;
   return (
     <Layout>
-
       <Sider style={{ height: "100vh", backgroundColor: "white" }}>
         <Image
           src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
@@ -30,19 +29,17 @@ function VendorDashboard() {
         </Container>
       </Nav>
 
-    <Layout>
-
+      <Layout>
         <Content style={{ background: "white" }}>
           <AppRoutes />
         </Content>
 
-      <Footer style={{ textAlign: "center" }}>
-        inMarket FoodTech Startup 2022
-      </Footer>
+        <Footer style={{ textAlign: "center" }}>
+          inMarket FoodTech Startup 2022
+        </Footer>
+      </Layout>
     </Layout>
-  </Layout> 
-
-  )
+  );
 }
 
 const Logo = styled(Link)`
@@ -89,4 +86,4 @@ const Container = styled.div`
   padding-bottom: 35px;
 `;
 
-export default VendorDashboard
+export default VendorDashboard;

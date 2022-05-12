@@ -30,7 +30,7 @@ const initialState = {
     }
     export const registration =  ({email, password, firstName, lastName, dob, gender, role, avatar}) => async (dispatch) => {
       try {
-        const response = await AuthService.registration(email, password, firstName, lastName, dob, gender, role, avatar)
+        const response = await AuthService.registration({email, password, firstName, lastName, dob, gender, role, avatar})
         console.log(response);
         localStorage.setItem('token', response.data.accessToken)
         dispatch({type: 'REGISTER_USER', payload: response.data})

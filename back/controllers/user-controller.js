@@ -15,6 +15,7 @@ class UserController {
 
   async signup(req, res, next) {
     try {
+      console.log('reqbody -->', req.body);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest('Ошибка при валидации', errors.array()));
@@ -22,9 +23,8 @@ class UserController {
       const {
         email, password, firstName, lastName, dob, gender, role,
       } = req.body;
-      console.log(req.file);
-      const avatarImageLink = req.file.filename || '';
-      const userData = await userService.registration(email, password, firstName, lastName, dob, gender, role, avatarImageLink);
+      const avatarImageLink = req.file?.filename || '';
+      const userData = await userService.registration({email, password, firstName, lastName, dob, gender, role, avatarImageLink});
       res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
       res.json(userData);
     } catch (error) {

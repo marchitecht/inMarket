@@ -32,7 +32,7 @@ function SignupForm(props) {
         <Input value={email} onChange={(e) => setEmail(prev => e.target.value)} type='email' placeholder='Ваш email'/>
         <Input value={password} onChange={(e) => setPassword(prev => e.target.value)} type='password' placeholder='пароль'/>
         <Input value={secondPassword} onChange={(e) => setSecondPassword(prev => e.target.value)} type='password' placeholder='подтвердите пароль'/>
-        <select  onChange={(e) => setRole(prev => e.target.value)}>
+        <select defaultValue={'Покупатель'}  onChange={(e) => setRole(prev => e.target.value)}>
           <option selected value={'Покупатель'}>Покупатель</option>
           <option value={'Продавец'}>Продавец</option>
         </select>

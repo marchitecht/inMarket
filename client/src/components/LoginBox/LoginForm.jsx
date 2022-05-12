@@ -38,7 +38,7 @@ function LoginForm(props) {
                 <GoogleButton onClick={redirectToGoogleSSO}/>
          
       </FormContainer>
-       < SubmitButton type='button' onClick={() => dispatch(login(email, password))}>Войти</SubmitButton>
+       < SubmitButton type='button' onClick={() => dispatch(login({email, password}))}>Войти</SubmitButton>
         <MutedLink>Не можешь войти? <Link to='/auth/signup'>Присоединиться</Link></MutedLink>
         
     </BoxContainer>
