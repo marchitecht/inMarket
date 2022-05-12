@@ -11,6 +11,11 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const upload = require('./middlewares/upload.middleware');
+
+// const http = require('http'); ///////////////
+// const { Server } = require('socket.io'); //////////////////
+const ws = require('ws');
+
 require('./auth/passport');
 require('./auth/passportGoogleSSO');
 
@@ -30,6 +35,36 @@ app.use(cors(
     origin: process.env.CLIENT_URL,
   },
 ));
+
+/// ///////////////
+
+// const server = http.createServer(app);
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST'],
+//   },
+// });
+
+// io.on('connection', (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
+
+//   socket.on('join_room', (data) => {
+//     socket.join(data);
+//     console.log(`User with ID: ${socket.id} joined room: ${data}`);
+//   });
+
+//   socket.on('send_message', (data) => {
+//     socket.to(data.room).emit('receive_message', data);
+//   });
+
+//   socket.on('disconnect', () => {
+//     console.log('User Disconnected', socket.id);
+//   });
+// });
+/// ////////////////////
+
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
@@ -67,5 +102,32 @@ app.use(passport.session());
 
 app.use('/api/v1', api);
 app.use(errorMiddleware);
+
+//рабочий вариант чата
+////////////////////////////////////////////
+const wss = new ws.Server({
+  port: 5001,
+}, () => console.log('Server started on 5001'));
+
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    message = JSON.parse(message);
+    switch (message.event) {
+      case 'message':
+        broadcastMessage(message);
+        break;
+      case 'connection':
+        broadcastMessage(message);
+        break;
+    }
+  });
+});
+
+function broadcastMessage(message, id) {
+  wss.clients.forEach((client) => {
+    client.send(JSON.stringify(message));
+  });
+}
+///////////////////////////////////////
 
 module.exports = app;

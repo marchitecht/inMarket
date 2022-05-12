@@ -4,6 +4,8 @@ import icon2 from "../img/footerIcons/face_w.png";
 import icon3 from "../img/footerIcons/twitter_w.png";
 import icon4 from "../img/footerIcons/inst_w.png";
 import { useNavigate } from "react-router-dom";
+import {Link} from 'react-router-dom'
+
 
 const iconsArray = [{
   img: icon1,
@@ -37,6 +39,7 @@ const navigate = useNavigate()
          )
        })}
      <Test onClick={()=> navigate('/test')}>Test</Test>
+     <Link to={'/chat'}>Chat</Link>
      </IconsContainer>
      <DataContainer>© {new Date().getFullYear()} inMarket FoodTech Startup</DataContainer>
     </FooterDiv>
