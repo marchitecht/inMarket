@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const upload = require('./middlewares/upload.middleware');
 require('./auth/passport');
 require('./auth/passportGoogleSSO');
 
@@ -20,6 +19,7 @@ const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.router');
 const indexRouter = require('./routes');
 const productRouter = require('./routes/product.router');
+const vendorRouter = require('./routes/vendor.router');
 const errorMiddleware = require('./middlewares/error.middleware');
 const api = require('./api');
 
@@ -54,6 +54,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/categories', productRouter);
+app.use('/vendor', vendorRouter);
 
 app.use(passport.initialize());
 app.use(passport.session());

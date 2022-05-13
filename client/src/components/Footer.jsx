@@ -25,7 +25,7 @@ const iconsArray = [{
 
 function Footer() {
 
-const navigate = useNavigate()
+// const navigate = useNavigate()
 
   return ( 
     <>
@@ -33,12 +33,12 @@ const navigate = useNavigate()
      <IconsContainer>
        {iconsArray.map((el) => {
          return(
-           <Icons onClick={()=> navigate(el.link)} icon={el.img} name={el.name}></Icons>
+           <Icons  icon={el.img} name={el.name}></Icons>
          )
        })}
-     <Test onClick={()=> navigate('/test')}>Test</Test>
+     <Test >Test</Test>
      </IconsContainer>
-     <DataContainer>© {new Date().getFullYear()} Copyright Text</DataContainer>
+     <DataContainer>© {new Date().getFullYear()} inMarket FoodTech Startup</DataContainer>
     </FooterDiv>
    
     </>

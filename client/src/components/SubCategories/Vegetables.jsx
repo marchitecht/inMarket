@@ -1,12 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import { useMemo, useState,useEffect } from "react";
-import { useDispatch, useSelector,useLocation, useNavigate } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { getCategory } from "../redux/reducers/productsReducer";
+import { useDispatch, useSelector, useNavigate } from "react-redux";
+import { useParams, Link, useLocation } from "react-router-dom";
+import { getCategory } from "../../redux/reducers/productsReducer";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css'
 
 function Vegetables() {
+  const location = useLocation()
+  console.log(location);
   const {categoryName} = useParams()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -30,7 +32,7 @@ function Vegetables() {
             return(
               <SplideSlide key={subcategory.id}>
                 <Card>
-                <Link to={'/subcategory/'+subcategory.id}>
+                <Link to={location.pathname + '/' +subcategory.id}>
                   <p>{subcategory.subCategoryName}</p>
                   <img src={`http://localhost:5000${subcategory.subCategoryImg}`} alt={subcategory.subCategoryName} />
                   <Gradient />

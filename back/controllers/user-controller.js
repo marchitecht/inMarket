@@ -23,7 +23,7 @@ class UserController {
         email, password, firstName, lastName, dob, gender, role,
       } = req.body;
       console.log(req.file);
-      const avatarImageLink = req.file.filename || '';
+      const avatarImageLink = req?.file?.filename || '';
       const userData = await userService.registration(email, password, firstName, lastName, dob, gender, role, avatarImageLink);
       res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
       res.json(userData);

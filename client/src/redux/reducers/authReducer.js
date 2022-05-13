@@ -14,7 +14,7 @@ const initialState = {
       case "REGISTER USER":
        return {...state, user: action.payload.user, auth: true}
        case 'LOGOUT': 
-       return {...state, user: {}, auth: false}
+       return {...state, user: null, auth: false}
       default:
         return state;
     }
@@ -28,9 +28,9 @@ const initialState = {
         console.log(error.response?.data?.message)
       }
     }
-    export const registration =  (email, password, firstName, lastName, dob, gender, role, avatar) => async (dispatch) => {
+    export const registration =  ({email, password, firstName, lastName, dob, gender, role, avatar}) => async (dispatch) => {
       try {
-        const response = await AuthService.registration(email, password, firstName, lastName, dob, gender, role, avatar)
+        const response = await AuthService.registration({email, password, firstName, lastName, dob, gender, role, avatar})
         console.log(response);
         localStorage.setItem('token', response.data.accessToken)
         dispatch({type: 'REGISTER_USER', payload: response.data})

@@ -1,5 +1,9 @@
 const ApiError = require('../exceptions/api-error');
-const { Category, Subcategory } = require('../db/models');
+const {
+  Category,
+  Subcategory,
+  Product,
+} = require('../db/models');
 
 class ProductService {
   async getCategories() {
@@ -45,6 +49,38 @@ class ProductService {
       }
     } catch (error) {
       throw ApiError.BadRequest('Ошибка при получении имени категории/подкатегории');
+    }
+  }
+
+  async getProducts(subCategoryId) {
+    try {
+      const products = await Product.findAll({
+        where: {
+          subCategoryId,
+        },
+        raw: true,
+      });
+      if (!products) {
+        throw ApiError.BadRequest('Ошибка при получении продуктов');
+      } else return products;
+    } catch (error) {
+      throw ApiError.BadRequest('Ошибка при получении продуктов');
+    }
+  }
+
+  async addProduct(subCategoryId) {
+    try {
+      const products = await Product.findAll({
+        where: {
+          subCategoryId,
+        },
+        raw: true,
+      });
+      if (!products) {
+        throw ApiError.BadRequest('Ошибка при получении продуктов');
+      } else return products;
+    } catch (error) {
+      throw ApiError.BadRequest('Ошибка при получении продуктов');
     }
   }
 }

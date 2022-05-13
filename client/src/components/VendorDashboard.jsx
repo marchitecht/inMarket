@@ -1,7 +1,21 @@
 import React from 'react'
 import styled from "styled-components";
 import { Layout, Image } from "antd";
-import SideMenu from "./components/vendorDashboard/sideItems";
+import SideMenu from "./vendorDashboard/sideItems";
+import { Link } from 'react-router-dom';
+import { Route, Routes} from "react-router-dom";
+import Category from "../components/Category";
+import LoginBox from "../components/LoginBox/LoginBox";
+import Vegetables from "../components/SubCategories/Vegetables";
+import DetailedOrder from "../components/vendorDashboard/modules/DetailedOrder/index";
+import Orders from "../components/vendorDashboard/modules/Orders/index";
+import Menu from "../components/vendorDashboard/modules/VendorMenu/index";
+import CreateMenuItem from "../components/vendorDashboard/modules/CreateMenuItem/index";
+import OrderHistory from "../components/vendorDashboard/modules/OrderHistory/index";
+import Settings from '../components/vendorDashboard/modules/Settings/index';
+import TestPage from "../components/ProductsExemple/Test.jsx";
+import Header from "../components/Header";
+
 function VendorDashboard() {
   const { Sider, Content, Footer } = Layout;
   return (
@@ -14,29 +28,18 @@ function VendorDashboard() {
         />
         <SideMenu />
       </Sider>
-
-      <Nav>
-        <Logo
-          src="https://cdn-icons-png.flaticon.com/512/862/862819.png"
-          to={"/"}
-        >
-          inMarket
-        </Logo>
-        <Container>
-          <Link to="/signin">Покупатель</Link>
-          <Link to="/vendor/signin">Продавец</Link>
-        </Container>
-      </Nav>
-
     <Layout>
-
         <Content style={{ background: "white" }}>
-          <AppRoutes />
-        </Content>
+    <Routes>
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders/:id" element={<DetailedOrder />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/menu/new" element={<CreateMenuItem />} />
+            <Route path="/history" element={<OrderHistory />} />
+            <Route path="/settings" element={<Settings />} />
+        </Routes>
 
-      <Footer style={{ textAlign: "center" }}>
-        inMarket FoodTech Startup 2022
-      </Footer>
+        </Content>
     </Layout>
   </Layout> 
 
@@ -69,7 +72,7 @@ const Nav = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 90px;
+  height: 7vh;
   z-index: 10;
   opacity: 0.8;
   transition: opacity 0.3s;

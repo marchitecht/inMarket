@@ -5,7 +5,7 @@ const upload = require('../middlewares/upload.middleware');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 router.route('/signup')
-  .get().post(upload.single('img'), body('email').isEmail(), body('password').isLength({ min: 8, max: 16 }), userController.signup);
+  .get().post(body('email').isEmail(), body('password').isLength({ min: 8, max: 16 }), userController.signup);
 router.route('/signin')
   .get().post(
     userController.signin,

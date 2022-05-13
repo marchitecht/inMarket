@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const BoxContainer = styled.div`
   width: 100%;
-  height: 15vh;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   /* box-shadow: 0px 0px 2px rgba(15,15,15,0.19); */
 `;
-export const MutedLink = styled.a`
+export const MutedLink = styled.div`
   font-size: 12px;
   color: rgba(200, 200, 200, 0.8);
   font-weight: 500;

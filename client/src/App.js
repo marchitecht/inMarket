@@ -5,25 +5,28 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/reducers/authReducer";
-import AppRoutes from "./components/AppRoutes/index";
 import Footer from "./components/Footer";
-
+import Search from "./components/Search";
+import AppRoutes from "./components/AppRoutes";
+import Header from "./components/Header";
 
 
 
 function App() {
+  let token;
   // const user = useSelector((store) => store.authReducer.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    token = localStorage.getItem("token")
     if (token) {
       dispatch(checkAuth());
     }
-  }, [token]);
+  }, [token, dispatch]);
   return (
     <div className="App">
-       <Pages />
-       <Footer/>  
+            <Pages/>
+            
+            <Footer/>
     </div>
   );
 }
