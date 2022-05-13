@@ -50,6 +50,8 @@ function App() {
             <Container>
               <Link to="/signin">Покупатель</Link>
               <Link to="/vendor/signin">Продавец</Link>
+              <Link to="/allproducts">Все продукты</Link>
+              <Link to={'/chat'}>Чат</Link>
             </Container>
           </Nav>
         )}
@@ -104,9 +106,11 @@ const Nav = styled.div`
 
 const Container = styled.div`
   padding-top: 35px;
-  font-size: 2rem;
+  font-size: 25px;
   display: flex;
   right: 20px;
+  grap: 40px;
+  gap: 20px;
   padding-right: 20px;
   padding-bottom: 35px;
 `;

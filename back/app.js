@@ -1,3 +1,6 @@
+/* eslint-disable default-case */
+/* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
 require('dotenv').config();
 const { Role } = require('./db/models');
 const express = require('express');
@@ -103,31 +106,51 @@ app.use(passport.session());
 app.use('/api/v1', api);
 app.use(errorMiddleware);
 
-//рабочий вариант чата
-////////////////////////////////////////////
+// рабочий вариант чата
+/// /////////////////////////////////////////
 const wss = new ws.Server({
-  port: 5001,
+  port: 5001, clientTracking: false,
+
 }, () => console.log('Server started on 5001'));
 
-wss.on('connection', (ws) => {
-  ws.on('message', (message) => {
+const clientMap = new Map();
+
+wss.on('connection', (clientConnection) => {
+  clientConnection.on('message', (message) => {
+    // eslint-disable-next-line no-param-reassign
     message = JSON.parse(message);
     switch (message.event) {
       case 'message':
-        broadcastMessage(message);
+        console.log({ message });
+        broadcastMessage(message, message.userId);
         break;
       case 'connection':
-        broadcastMessage(message);
+        console.log({ message });
+        clientConnection.userId = message.userId;
+        clientMap.set(message.userId, clientConnection);
+        broadcastMessage(message, message.userId);
         break;
     }
   });
 });
 
 function broadcastMessage(message, id) {
-  wss.clients.forEach((client) => {
+  console.log({ id, message });
+  clientMap.forEach((client) => {
     client.send(JSON.stringify(message));
+    console.log(message.userId, client.userId);
+    if (client.readyState === ws.OPEN) {
+      client.send(JSON.stringify({
+        payload: {
+          userName: message.userName,
+          message: message.message || 'connected',
+          ownMessage: message.userId === client.userId,
+        },
+      }));
+      console.log(message);
+    }
   });
 }
-///////////////////////////////////////
+/// ////////////////////////////////////
 
 module.exports = app;

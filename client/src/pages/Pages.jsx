@@ -21,7 +21,7 @@ import WebSock from "../components/WebSock/WebSock";
       <Route path="/fruits" element={<Fruits />} />
       <Route path="/bread" element={<Bread />} />
       <Route path="/berries" element={<Berries />} />
-      <Route path="/test" element={<TestPage />} />
+      <Route path="/allproducts" element={<TestPage />} />
       <Route path="/chat" element={<WebSock/>} />
     </Routes>
   )

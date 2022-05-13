@@ -38,8 +38,6 @@ const navigate = useNavigate()
            <Icons onClick={()=> navigate(el.link)} icon={el.img} name={el.name}></Icons>
          )
        })}
-     <Test onClick={()=> navigate('/test')}>Test</Test>
-     <Link to={'/chat'}>Chat</Link>
      </IconsContainer>
      <DataContainer>© {new Date().getFullYear()} inMarket FoodTech Startup</DataContainer>
     </FooterDiv>
