@@ -25,7 +25,9 @@ function App() {
   return (
     <div className="App">
             <Pages/>
-            
+            //TODO
+            <Link to="/allproducts">Все продукты</Link>
+            <Link to={'/chat'}>Чат</Link>
             <Footer/>
     </div>
   );

@@ -14,6 +14,15 @@ import Header from "../components/Header";
 import VendorPages from './VendorPages'
 import CreateMenuItem from "../components/vendorDashboard/modules/CreateMenuItem/index";
 import AppRoutes from '../components/AppRoutes'
+import Vegetables from "../components/SubCategories/Vegetables";
+import Fruits from "../components/SubCategories/Fruits";
+import Bread from "../components/SubCategories/Bread";
+import Berries from "../components/SubCategories/Berries";
+// import Chat from "../components/Chat/Chat";
+import WebSock from "../components/WebSock/WebSock";
+
+ function Pages() {
+  const location = useLocation();
 
 function Pages() {
   return (
@@ -41,16 +50,16 @@ function Pages() {
 
 
 
+        {/* <Route path="/vegetables" element={<Vegetables />} />
+        <Route path="/fruits" element={<Fruits />} />
+        <Route path="/bread" element={<Bread />} />
+        <Route path="/berries" element={<Berries />} /> */}
+        <Route path="/allproducts" element={<TestPage />} />
+        <Route path="/chat" element={<WebSock/>} />
 
-
+        </Routes>
+</>)
         {/* <Route path="/signin" element={<LoginBox />} />
-      <Route path="/vegetables" element={<Vegetables />} />
-      <Route path="/fruits" element={<Fruits />} />
-      <Route path="/bread" element={<Bread />} />
-    <Route path="/berries" element={<Berries />} /> */}
-        {/* <Route path="/test" element={<ProductsExemple />} /> */}
-      </Routes>
-</>
   )
 }
 export default Pages

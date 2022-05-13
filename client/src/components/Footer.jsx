@@ -4,6 +4,8 @@ import icon2 from "../img/footerIcons/face_w.png";
 import icon3 from "../img/footerIcons/twitter_w.png";
 import icon4 from "../img/footerIcons/inst_w.png";
 import { useNavigate } from "react-router-dom";
+import {Link} from 'react-router-dom'
+
 
 const iconsArray = [{
   img: icon1,
@@ -36,7 +38,6 @@ function Footer() {
            <Icons  icon={el.img} name={el.name}></Icons>
          )
        })}
-     <Test >Test</Test>
      </IconsContainer>
      <DataContainer>© {new Date().getFullYear()} inMarket FoodTech Startup</DataContainer>
     </FooterDiv>

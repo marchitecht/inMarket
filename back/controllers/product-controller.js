@@ -44,8 +44,9 @@ class ProductController {
   async getProducts(req, res, next) {
     try {
       const { subCategoryId } = req.params;
-      const products = await productService.getProducts(subCategoryId);
-      res.json({ products });
+      const categoryName = await productService.getCategoryName(+categoryId, 'Subcategory');
+      const category = await productService.getCategory(+categoryId);
+      res.json({ subcategories: [...category], currentCategory: { categoryId, categoryName } });
     } catch (error) {
       next(error);
     }

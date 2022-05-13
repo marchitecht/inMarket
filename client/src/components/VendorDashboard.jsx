@@ -63,7 +63,11 @@ const Nav = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
+<<<<<<< HEAD
   height: 7vh;
+=======
+  height: 90px;
+>>>>>>> origin/dmitriy
   z-index: 10;
   opacity: 0.8;
   transition: opacity 0.3s;
