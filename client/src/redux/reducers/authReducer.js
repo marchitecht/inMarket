@@ -11,7 +11,7 @@ const initialState = {
         return {...state, user: action.payload.user, auth: true }
       case "LOGIN_USER": 
         return {...state, user: action.payload.user, auth: true }
-      case "REGISTER USER":
+      case "REGISTER_USER":
        return {...state, user: action.payload.user, auth: true}
        case 'LOGOUT': 
        return {...state, user: null, auth: false}

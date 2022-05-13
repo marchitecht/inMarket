@@ -29,13 +29,15 @@ function Pages() {
         <Route path="/test" element={<CreateMenuItem/>}></Route>
 
         <Route path="/categories/:categoryName/:subCategoryId/product" element={<div>PRODUCT</div>}></Route>
-        <Route path="/vendor/orders" element={<Orders />} />
-    <Route path="/vendor/orders/:id" element={<DetailedOrder />} />
-    <Route path="/vendor/menu" element={<Menu />} />
-    <Route path="/vendor/menu/new" element={<CreateMenuItem />} />
-    <Route path="/vendor/history" element={<OrderHistory />} />
-    <Route path="/vendor/settings" element={<Settings />} />
-        {/* <Route path="/vendor" element={<VendorDashboard/>}/> */}
+        <Route path="/vendor" element={<VendorDashboard/>}>
+
+                  <Route path="/vendor/orders" element={<Orders />} />
+                  <Route path="/vendor/orders/:id" element={<DetailedOrder />} />
+                  <Route path="/vendor/menu" element={<Menu />} />
+                  <Route path="/vendor/menu/new" element={<CreateMenuItem />} />
+                  <Route path="/vendor/history" element={<OrderHistory />} />
+                  <Route path="/vendor/settings" element={<Settings />} />
+        </Route>
 
 
 
