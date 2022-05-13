@@ -5,7 +5,7 @@ const SideMenu = () =>{
   const navigate = useNavigate()
   const menuItems = [
     {
-      key: 'orders',
+      key: '',
       label: 'Заказы',
     },
     {

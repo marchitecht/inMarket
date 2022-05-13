@@ -12,6 +12,7 @@ import Header from "./components/Header";
 
 
 
+
 function App() {
   let token;
   // const user = useSelector((store) => store.authReducer.user);
@@ -26,8 +27,7 @@ function App() {
     <div className="App">
             <Pages/>
             //TODO
-            <Link to="/allproducts">Все продукты</Link>
-            <Link to={'/chat'}>Чат</Link>
+            
             <Footer/>
     </div>
   );

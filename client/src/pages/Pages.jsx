@@ -1,5 +1,5 @@
 import React, { } from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
 import Category from "../components/Category";
 import LoginBox from "../components/LoginBox/LoginBox";
 import Categories from "../components/SubCategories/Vegetables";
@@ -21,10 +21,9 @@ import Berries from "../components/SubCategories/Berries";
 // import Chat from "../components/Chat/Chat";
 import WebSock from "../components/WebSock/WebSock";
 
- function Pages() {
+   
+  export default function Pages() {
   const location = useLocation();
-
-function Pages() {
   return (
     <>
     <Header></Header>
@@ -40,7 +39,7 @@ function Pages() {
         <Route path="/categories/:categoryName/:subCategoryId/product" element={<div>PRODUCT</div>}></Route>
         <Route path="/vendor" element={<VendorDashboard/>}>
 
-                  <Route path="/vendor/orders" element={<Orders />} />
+                  <Route index element={<Orders />} />
                   <Route path="/vendor/orders/:id" element={<DetailedOrder />} />
                   <Route path="/vendor/menu" element={<Menu />} />
                   <Route path="/vendor/menu/new" element={<CreateMenuItem />} />
@@ -50,22 +49,8 @@ function Pages() {
 
 
 
-        {/* <Route path="/vegetables" element={<Vegetables />} />
-        <Route path="/fruits" element={<Fruits />} />
-        <Route path="/bread" element={<Bread />} />
-        <Route path="/berries" element={<Berries />} /> */}
         <Route path="/allproducts" element={<TestPage />} />
         <Route path="/chat" element={<WebSock/>} />
 
         </Routes>
-</>)
-        {/* <Route path="/signin" element={<LoginBox />} />
-  )
-}
-export default Pages
-{/* 
-      <Route path="/vegetables" element={<Vegetables />} />
-      <Route path="/fruits" element={<Fruits />} />
-      <Route path="/bread" element={<Bread />} />
-      <Route path="/berries" element={<Berries />} /> */}
-{/* <Route path="/test" element={<ProductsExemple />} /> */ }
+</>)}

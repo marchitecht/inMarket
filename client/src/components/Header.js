@@ -23,6 +23,8 @@ const Header = () => {
                 inMarket
             </Logo>
             <Container>
+            <Link to="/allproducts">Все продукты</Link>
+            <Link to={'/chat'}>Чат</Link>
                 {(user) ? <button type="button" onClick={handleClick}>Выйти</button> : <Link to='/auth/signup'>Зарегистрироваться</Link>}
             </Container>
         </Nav>
@@ -71,6 +73,7 @@ const Container = styled.div`
   right: 20px;
   padding-right: 20px;
   padding-bottom: 35px;
+  gap:20px;
 `;
 
 export default Header;
