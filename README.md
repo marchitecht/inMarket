@@ -10,6 +10,8 @@ assortment, weight and price.
 ![deal gif](https://user-images.githubusercontent.com/90207733/168584746-cbd065ab-dd62-4b6e-90a5-f2b8fbfe722a.gif)
 
 Our stack and technologies:
+
+
 ![techs](https://user-images.githubusercontent.com/90207733/168584898-ef5d3c6e-e636-4b36-9122-8c44031da995.gif)
 
 PERN;
