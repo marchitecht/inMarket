@@ -1,4 +1,4 @@
-# priceHunter
+# inMarket
 
 simply web application where you can buy groceries at lower price by EOD 
 
